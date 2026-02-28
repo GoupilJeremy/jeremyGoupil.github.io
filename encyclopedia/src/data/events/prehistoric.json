@@ -1,0 +1,172 @@
+[
+  {
+    "id": "primates",
+    "era": "biologique",
+    "date": { "year": -50000000, "label": "−50 millions d'années" },
+    "category": "biologie",
+    "title": "Apparition des primates",
+    "description": "Après l'extinction des dinosaures, les mammifères insectivores arboricoles évoluent vers les premiers primates. Ces petits animaux développent une vision binoculaire, des mains préhensiles et un cerveau plus volumineux — caractères fondamentaux qui mèneront aux humains.",
+    "impact": 8,
+    "connections": ["extinction-kt", "grands-singes"]
+  },
+  {
+    "id": "grands-singes",
+    "era": "biologique",
+    "date": { "year": -15000000, "label": "−15 millions d'années" },
+    "category": "biologie",
+    "title": "Divergence des grands singes",
+    "description": "Les hominoïdes (singes sans queue) divergent des singes à queue. L'ancêtre commun des chimpanzés et des humains vivait en Afrique. À travers l'accumulation de mutations génétiques, deux lignées se séparent : l'une menant aux Pan (chimpanzés), l'autre aux Homo.",
+    "impact": 7,
+    "connections": ["primates", "bipedisme"]
+  },
+  {
+    "id": "bipedisme",
+    "era": "biologique",
+    "date": { "year": -6000000, "label": "−6 millions d'années" },
+    "category": "biologie",
+    "title": "Bipédisme — La marche debout",
+    "description": "Les premiers hominidés adoptent la marche debout. La bipédie libère les mains, permettant la manipulation d'outils. Elle modifie aussi le bassin et le crâne, favorisant un cerveau plus développé. Sahelanthropus tchadensis en est l'un des plus anciens représentants connus.",
+    "impact": 9,
+    "connections": ["grands-singes", "australopitheque"]
+  },
+  {
+    "id": "australopitheque",
+    "era": "biologique",
+    "date": { "year": -4000000, "label": "−4 millions d'années" },
+    "category": "biologie",
+    "title": "Australopithèques",
+    "description": "Les australopithèques combinent bipédie et petit cerveau (~450 cc). Lucy (Australopithecus afarensis, −3.2 Ma) est l'un des squelettes les mieux conservés. Ces hominidés vivent en groupes sociaux complexes en savane africaine, posant les bases du comportement humain.",
+    "impact": 8,
+    "connections": ["bipedisme", "premiers-outils", "homo-habilis"]
+  },
+  {
+    "id": "premiers-outils",
+    "era": "biologique",
+    "date": { "year": -3300000, "label": "−3.3 millions d'années" },
+    "category": "technologies",
+    "title": "Premiers outils en pierre (Oldowayen)",
+    "description": "Les plus anciens outils lithiques connus, découverts à Lomekwi (Kenya), précèdent le genre Homo. Des éclats de roche sont taillés pour couper, racler, broyer. Cette technologie permet d'accéder à la moelle osseuse des carcasses — source de graisses et protéines essentielles.",
+    "impact": 9,
+    "connections": ["australopitheque", "homo-habilis", "homo-erectus"]
+  },
+  {
+    "id": "homo-habilis",
+    "era": "biologique",
+    "date": { "year": -2400000, "label": "−2.4 millions d'années" },
+    "category": "biologie",
+    "title": "Homo habilis — L'homme habile",
+    "description": "Le premier représentant du genre Homo apparaît avec un cerveau de 600 cc — 30% plus grand que les australopithèques. Il fabrique systématiquement des outils, vit en groupes coopératifs et développe des comportements sociaux complexes incluant probablement un proto-langage.",
+    "impact": 8,
+    "connections": ["australopitheque", "premiers-outils", "homo-erectus"]
+  },
+  {
+    "id": "homo-erectus",
+    "era": "biologique",
+    "date": { "year": -1800000, "label": "−1.8 millions d'années" },
+    "category": "biologie",
+    "title": "Homo erectus — La première migration hors d'Afrique",
+    "description": "Homo erectus (cerveau ~900 cc) est le premier hominidé à quitter l'Afrique, atteignant l'Asie et l'Europe. Il fabrique des bifaces symétriques (Acheuléen), vit en groupes sociaux coordonnés et chasse de grands gibiers. C'est l'ancêtre direct de Homo sapiens.",
+    "impact": 9,
+    "connections": ["homo-habilis", "maitrise-feu"]
+  },
+  {
+    "id": "maitrise-feu",
+    "era": "biologique",
+    "date": { "year": -1000000, "label": "−1 million d'années" },
+    "category": "technologies",
+    "title": "Maîtrise du feu",
+    "description": "Homo erectus contrôle et entretient le feu. Cette révolution transforme l'alimentation (cuisson = meilleure digestibilité, moins de parasites), étend les activités nocturnes, réchauffe dans les régions froides et crée un foyer social autour duquel se développe le langage et la transmission culturelle.",
+    "impact": 10,
+    "connections": ["homo-erectus", "homo-sapiens"]
+  },
+  {
+    "id": "homo-sapiens",
+    "era": "biologique",
+    "date": { "year": -300000, "label": "−300 000 ans" },
+    "category": "biologie",
+    "title": "Homo sapiens — Notre espèce",
+    "description": "Homo sapiens émerge en Afrique avec un cerveau de ~1350 cc. Doté d'une capacité symbolique sans précédent, il développe un langage articulé complexe, une pensée abstraite et une coopération à grande échelle entre individus non-parents — base de toute civilisation future.",
+    "impact": 10,
+    "connections": ["maitrise-feu", "langage-articule", "art-rupestre"]
+  },
+  {
+    "id": "langage-articule",
+    "era": "biologique",
+    "date": { "year": -200000, "label": "−200 000 ans" },
+    "category": "sciences",
+    "title": "Langage articulé complexe",
+    "description": "Le développement du langage articulé — permis par l'hyoïde, le larynx descendu et les zones de Broca/Wernicke — révolutionne la transmission du savoir. Les humains peuvent désormais partager des informations abstraites, planifier, raconter des histoires et coordonner des groupes larges.",
+    "impact": 10,
+    "connections": ["homo-sapiens", "art-rupestre", "premier-commerce"]
+  },
+  {
+    "id": "arc-fleche",
+    "era": "biologique",
+    "date": { "year": -70000, "label": "−70 000 ans" },
+    "category": "technologies",
+    "title": "Arc et flèche",
+    "description": "L'arc à flèche — attesté en Afrique du Sud dès −70 000 ans — est la première technologie à stocker et libérer de l'énergie mécanique. Il transforme la chasse en permettant d'atteindre une proie à distance, réduisant les risques et augmentant la quantité de viande disponible.",
+    "impact": 8,
+    "connections": ["homo-sapiens", "art-rupestre"]
+  },
+  {
+    "id": "art-rupestre",
+    "era": "biologique",
+    "date": { "year": -40000, "label": "−40 000 ans" },
+    "category": "sciences",
+    "title": "Art rupestre et pensée symbolique",
+    "description": "Les grottes de Lascaux, Chauvet et Altamira témoignent d'une explosion symbolique. Les humains représentent animaux, rituels et abstractions. Cette capacité de représentation mentale est le fondement de l'écriture, des mathématiques et de toute science future.",
+    "impact": 9,
+    "connections": ["homo-sapiens", "langage-articule", "domestication-chien"]
+  },
+  {
+    "id": "domestication-chien",
+    "era": "biologique",
+    "date": { "year": -15000, "label": "−15 000 ans" },
+    "category": "technologies",
+    "title": "Domestication du chien",
+    "description": "Le loup gris est domestiqué par les chasseurs-cueilleurs du Proche-Orient ou d'Asie centrale. Premier animal domestiqué de l'histoire, le chien devient aide à la chasse, gardien et compagnon. Cette première alliance interspécifique ouvre la voie à la révolution agricole.",
+    "impact": 7,
+    "connections": ["art-rupestre", "revolution-agricole"]
+  },
+  {
+    "id": "revolution-agricole",
+    "era": "civilisations",
+    "date": { "year": -10000, "label": "−10 000 ans" },
+    "category": "technologies",
+    "title": "Révolution néolithique — Agriculture",
+    "description": "Au Proche-Orient (Croissant fertile), les humains commencent à cultiver blé, orge et légumineuses. Cette révolution permet de nourrir des populations plus denses, crée des surplus permettant la spécialisation du travail, et pose les bases des premières villes et civilisations.",
+    "impact": 10,
+    "connections": ["domestication-chien", "ceramique", "elevage", "premieres-villes"]
+  },
+  {
+    "id": "ceramique",
+    "era": "civilisations",
+    "date": { "year": -10000, "label": "−10 000 ans" },
+    "category": "technologies",
+    "title": "Céramique — Stockage et cuisson",
+    "description": "La poterie cuite au four permet de stocker des grains, de l'eau et de la nourriture, et de cuire des aliments liquides impossibles à préparer auparavant. Cette technologie est indissociable de la sédentarisation agricole et permet l'accumulation de surplus alimentaires.",
+    "impact": 8,
+    "connections": ["revolution-agricole", "elevage"]
+  },
+  {
+    "id": "elevage",
+    "era": "civilisations",
+    "date": { "year": -9000, "label": "−9 000 ans" },
+    "category": "technologies",
+    "title": "Élevage des animaux",
+    "description": "La domestication des moutons, chèvres, bovins et porcs fournit une source de protéines stable, de la laine, du cuir et une force de travail. Les animaux de trait (bœuf, âne) décuplent la capacité agricole et permettent le transport, accélérant les échanges commerciaux.",
+    "impact": 9,
+    "connections": ["revolution-agricole", "ceramique", "metallurgie-cuivre"]
+  },
+  {
+    "id": "metallurgie-cuivre",
+    "era": "civilisations",
+    "date": { "year": -7000, "label": "−7 000 ans" },
+    "category": "technologies",
+    "title": "Métallurgie du cuivre",
+    "description": "Au Proche-Orient et dans les Balkans, les humains apprennent à fondre le cuivre natif pour fabriquer outils et bijoux. La métallurgie requiert des fours à haute température, de la spécialisation artisanale et des réseaux d'échange de minerai — premiers jalons de l'économie complexe.",
+    "impact": 8,
+    "connections": ["elevage", "premieres-villes", "metallurgie-bronze"]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "copernic-heliocentrisme",
+    "era": "moderne",
+    "date": { "year": 1543, "label": "1543" },
+    "category": "sciences",
+    "title": "Copernic — Révolution héliocentrique",
+    "description": "Nicolas Copernic publie 'De revolutionibus orbium coelestium' sur son lit de mort : la Terre tourne autour du Soleil et non l'inverse. Cette révolution copernicienne décentre l'humanité dans l'univers et exige de nouvelles mathématiques pour décrire les orbites — lançant la révolution scientifique.",
+    "impact": 10,
+    "connections": ["presse-gutenberg", "renaissance-art-science", "galilee-telescope"]
+  },
+  {
+    "id": "galilee-telescope",
+    "era": "moderne",
+    "date": { "year": 1609, "label": "1609" },
+    "category": "sciences",
+    "title": "Galilée — Télescope et méthode scientifique",
+    "description": "Galilée améliore le télescope et observe lunes de Jupiter, phases de Vénus et taches solaires, confirmant Copernic. Plus fondamentalement, il établit la méthode expérimentale : hypothèse → expérience → mesure → théorie mathématique. Ce programme fonde la physique moderne et toutes les sciences de la nature.",
+    "impact": 10,
+    "connections": ["copernic-heliocentrisme", "optique-ibn-al-haytham", "newton-gravitation"]
+  },
+  {
+    "id": "newton-gravitation",
+    "era": "moderne",
+    "date": { "year": 1687, "label": "1687" },
+    "category": "sciences",
+    "title": "Newton — Principia Mathematica",
+    "description": "Les Principia Mathematica d'Isaac Newton unifient en trois lois du mouvement et la loi de gravitation universelle toute la mécanique terrestre et céleste. Pour la première fois, une théorie mathématique prédit avec précision le mouvement des planètes, des marées et des projectiles — modèle de toute théorie scientifique future.",
+    "impact": 10,
+    "connections": ["galilee-telescope", "machine-vapeur", "lavoisier-chimie"]
+  },
+  {
+    "id": "tableau-periodique",
+    "era": "moderne",
+    "date": { "year": 1869, "label": "1869" },
+    "category": "sciences",
+    "title": "Tableau périodique de Mendeleïev",
+    "description": "Dmitri Mendeleïev classe 63 éléments connus par masse atomique croissante et période, révélant une structure périodique des propriétés chimiques. Il prédit l'existence et les propriétés de trois éléments alors inconnus (gallium, scandium, germanium). Le tableau est le premier modèle prédictif de la matière.",
+    "impact": 10,
+    "connections": ["lavoisier-chimie", "maxwell-electromagnetisme", "darwin-evolution"]
+  },
+  {
+    "id": "machine-vapeur",
+    "era": "moderne",
+    "date": { "year": 1769, "label": "1769" },
+    "category": "technologies",
+    "title": "Machine à vapeur de Watt — Révolution industrielle",
+    "description": "James Watt améliore la machine à vapeur en ajoutant un condenseur séparé, multipliant par 5 l'efficacité. Cette machine transforme la chaleur en travail mécanique à grande échelle : elle motorise usines, mines, bateaux et locomotives — déclenchant la révolution industrielle et la rupture la plus radicale dans l'histoire économique humaine.",
+    "impact": 10,
+    "connections": ["newton-gravitation", "lavoisier-chimie", "vaccination-jenner"]
+  },
+  {
+    "id": "lavoisier-chimie",
+    "era": "moderne",
+    "date": { "year": 1789, "label": "1789" },
+    "category": "sciences",
+    "title": "Lavoisier — Révolution chimique",
+    "description": "Antoine Lavoisier démantèle la théorie du phlogistique et établit la chimie moderne : conservation de la masse, rôle de l'oxygène dans la combustion et la respiration, nomenclature chimique systématique. Son 'Traité élémentaire de chimie' est le premier manuel de chimie moderne.",
+    "impact": 9,
+    "connections": ["newton-gravitation", "machine-vapeur", "batterie-volta"]
+  },
+  {
+    "id": "vaccination-jenner",
+    "era": "moderne",
+    "date": { "year": 1796, "label": "1796" },
+    "category": "sciences",
+    "title": "Vaccination — Edward Jenner",
+    "description": "Edward Jenner inocule à un garçon du matériel de vaccine (variole de vache), puis de variole humaine : l'enfant est immunisé. La vaccination — terme inventé par Pasteur en hommage à Jenner — deviendra la technologie médicale ayant sauvé le plus de vies dans l'histoire, éradiquant finalement la variole en 1980.",
+    "impact": 10,
+    "connections": ["machine-vapeur", "pasteur-microbes", "darwin-evolution"]
+  },
+  {
+    "id": "batterie-volta",
+    "era": "moderne",
+    "date": { "year": 1800, "label": "1800" },
+    "category": "technologies",
+    "title": "Pile de Volta — L'électricité en bouteille",
+    "description": "Alessandro Volta invente la première source d'électricité continue : la pile électrochimique. Pour la première fois, on peut produire un courant électrique stable et l'étudier. Cette invention déclenche une révolution de la physique électrique et conduit directement au télégraphe, à l'électrolyse et à l'électromagnétisme.",
+    "impact": 9,
+    "connections": ["lavoisier-chimie", "maxwell-electromagnetisme", "ampoule-edison"]
+  },
+  {
+    "id": "darwin-evolution",
+    "era": "moderne",
+    "date": { "year": 1859, "label": "1859" },
+    "category": "sciences",
+    "title": "Darwin — De l'origine des espèces",
+    "description": "Charles Darwin publie 'De l'origine des espèces' : la sélection naturelle explique l'évolution du vivant sans dessein divin. Cette théorie unifie toute la biologie et révolutionne la conception de la place de l'Homme dans la nature. Elle sera confirmée et étendue par la génétique (néo-darwinisme) au XXe siècle.",
+    "impact": 10,
+    "connections": ["vaccination-jenner", "pasteur-microbes", "tableau-periodique"]
+  },
+  {
+    "id": "maxwell-electromagnetisme",
+    "era": "moderne",
+    "date": { "year": 1865, "label": "1865" },
+    "category": "sciences",
+    "title": "Maxwell — Équations de l'électromagnétisme",
+    "description": "James Clerk Maxwell unifie électricité, magnétisme et optique en quatre équations élégantes. Il prédit l'existence des ondes électromagnétiques et calcule leur vitesse — égale à celle de la lumière. Ses équations permettront la radio, la télévision, le WiFi, et posent la base de la relativité restreinte d'Einstein.",
+    "impact": 10,
+    "connections": ["batterie-volta", "darwin-evolution", "radio-marconi", "einstein-relativite"]
+  },
+  {
+    "id": "pasteur-microbes",
+    "era": "moderne",
+    "date": { "year": 1865, "label": "1865–1880" },
+    "category": "sciences",
+    "title": "Pasteur — Théorie microbienne des maladies",
+    "description": "Louis Pasteur démontre que les maladies infectieuses sont causées par des micro-organismes, réfute la génération spontanée et développe la pasteurisation. Il crée les vaccins contre le choléra des poules, le charbon et la rage. La bactériologie qu'il fonde sauvera des centaines de millions de vies.",
+    "impact": 10,
+    "connections": ["darwin-evolution", "vaccination-jenner", "tableau-periodique", "penicilline"]
+  },
+  {
+    "id": "telephone-bell",
+    "era": "moderne",
+    "date": { "year": 1876, "label": "1876" },
+    "category": "technologies",
+    "title": "Téléphone de Bell",
+    "description": "Alexander Graham Bell transmet la voix humaine par fil électrique sur une distance de quelques mètres : 'Mr. Watson, come here!' Le téléphone révolutionne la communication à distance, comprime l'espace social et économique, et initie la convergence entre communication et électricité qui aboutira à Internet.",
+    "impact": 9,
+    "connections": ["maxwell-electromagnetisme", "ampoule-edison", "radio-marconi"]
+  },
+  {
+    "id": "ampoule-edison",
+    "era": "moderne",
+    "date": { "year": 1879, "label": "1879" },
+    "category": "technologies",
+    "title": "Ampoule électrique et réseau d'Edison",
+    "description": "Thomas Edison met au point l'ampoule à filament de carbone (14 heures d'autonomie) et, surtout, conçoit le premier système de distribution d'électricité (centrale de Pearl Street, New York). L'électricité domestique transforme la vie quotidienne, efface la contrainte lumineuse et structure l'économie industrielle moderne.",
+    "impact": 9,
+    "connections": ["batterie-volta", "telephone-bell", "radio-marconi"]
+  },
+  {
+    "id": "rayons-x",
+    "era": "moderne",
+    "date": { "year": 1895, "label": "1895" },
+    "category": "sciences",
+    "title": "Rayons X — Röntgen",
+    "description": "Wilhelm Röntgen découvre accidentellement que des rayonnements inconnus traversent la matière et impressionnent les plaques photographiques. Les rayons X transforment immédiatement la médecine (diagnostic interne non invasif) et ouvrent la voie à la physique des particules, à la cristallographie et à l'étude de la structure de l'ADN.",
+    "impact": 9,
+    "connections": ["maxwell-electromagnetisme", "einstein-relativite", "mecanique-quantique"]
+  },
+  {
+    "id": "radio-marconi",
+    "era": "moderne",
+    "date": { "year": 1895, "label": "1895–1901" },
+    "category": "technologies",
+    "title": "Radio de Marconi — Ondes hertziennes",
+    "description": "Guglielmo Marconi réalise les premières transmissions radio sans fil, franchissant l'Atlantique en 1901. La radio est la première technologie de communication de masse sans infrastructure filaire. Elle prépare le terrain pour la télévision, le radar (crucial pendant la Seconde Guerre mondiale), le WiFi et le mobile.",
+    "impact": 9,
+    "connections": ["maxwell-electromagnetisme", "ampoule-edison", "telephone-bell", "freres-wright"]
+  }
+]
