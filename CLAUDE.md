@@ -2,93 +2,146 @@
 
 ## Project Overview
 
-This is **jeremyGoupil.github.io** — a personal portfolio/resume website for Jeremy Goupil, hosted on GitHub Pages. It is a static HTML/CSS/JS site with no build tools, frameworks, or dependencies.
+**TechLine** — an interactive 3D encyclopedia of the history of science and technology, from the formation of Earth to the present day. Users navigate a 3D globe through time, exploring geolocated scientific discoveries and technological innovations.
 
 **Live URL:** https://jeremygoupil.github.io
+
+## Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build | Vite 7 |
+| 3D Engine | Three.js via React Three Fiber (@react-three/fiber) + drei |
+| State | Zustand |
+| Styling | Tailwind CSS 4 |
+| Routing | React Router 7 |
+| Testing | Vitest + React Testing Library |
+| Linting | ESLint + Prettier |
 
 ## Repository Structure
 
 ```
 .
-├── index.html              # Main (and only) HTML page — the portfolio
-├── params.json             # GitHub Pages internal config (do not delete)
-├── images/                 # Image assets (background, GitHub logo)
-│   ├── bkg.png
-│   └── blacktocat.png
-├── javascripts/
-│   └── main.js             # Placeholder JS file (currently just a console.log)
-└── stylesheets/
-    ├── stylesheet.css       # Base GitHub Pages theme (dark/terminal aesthetic)
-    ├── custom.css           # Portfolio-specific styles (overrides base theme)
-    ├── pygment_trac.css     # Syntax highlighting theme
-    └── print.css            # Print stylesheet (referenced but may not exist)
+├── index.html                      # Vite entry point
+├── package.json                    # Dependencies and scripts
+├── vite.config.ts                  # Vite + Tailwind + Vitest config
+├── tsconfig.json                   # TypeScript project references
+├── tsconfig.app.json               # App TypeScript config
+├── tsconfig.node.json              # Node/Vite TypeScript config
+├── eslint.config.js                # ESLint flat config
+├── .prettierrc                     # Prettier config
+├── .gitignore
+├── CLAUDE.md                       # This file
+├── public/
+│   └── favicon.svg                 # App favicon
+├── src/
+│   ├── main.tsx                    # React entry point
+│   ├── App.tsx                     # Root component
+│   ├── index.css                   # Global styles + Tailwind + CSS variables
+│   ├── vite-env.d.ts               # Vite type declarations
+│   ├── components/
+│   │   ├── Globe/
+│   │   │   ├── Globe.tsx           # 3D globe sphere + wireframe
+│   │   │   ├── Atmosphere.tsx      # Glow effect around globe
+│   │   │   ├── EventMarker.tsx     # Single clickable marker on globe
+│   │   │   └── EventMarkers.tsx    # Renders all markers from data
+│   │   ├── Scene/
+│   │   │   ├── SceneSetup.tsx      # R3F Canvas, camera, lights, controls
+│   │   │   └── Background.tsx      # Starfield background
+│   │   ├── Timeline/
+│   │   │   └── Timeline.tsx        # Timeline bar with era chips + slider
+│   │   └── UI/
+│   │       ├── NavigationBar.tsx   # Top navigation bar
+│   │       └── EventPanel.tsx      # Side panel for event details
+│   ├── data/
+│   │   ├── eras.json               # 13 eras from formation to contemporary
+│   │   ├── categories.json         # 10 scientific categories
+│   │   └── events/
+│   │       └── sample.json         # Initial 14 sample events
+│   ├── hooks/                      # Custom React hooks (to be expanded)
+│   ├── stores/
+│   │   └── appStore.ts             # Zustand global state
+│   ├── types/
+│   │   └── index.ts                # Shared TypeScript types
+│   ├── utils/
+│   │   ├── coordinates.ts          # lat/lng → 3D position conversion
+│   │   ├── timeScale.ts            # Year ↔ timeline position + formatting
+│   │   └── timeScale.test.ts       # Unit tests for time utilities
+│   └── test/
+│       └── setup.ts                # Vitest setup (jest-dom matchers)
+└── legacy-portfolio/               # Archived original portfolio site
 ```
 
-## Technology Stack
+## Commands
 
-- **HTML5** — semantic markup, single-page layout
-- **CSS3** — no preprocessors, no CSS framework; styles use `!important` overrides on the base GitHub Pages theme
-- **Vanilla JavaScript** — minimal usage (placeholder only)
-- **GitHub Pages** — automatic deployment from the `master` branch
+```bash
+npm run dev          # Start dev server (Vite)
+npm run build        # TypeScript check + production build
+npm run preview      # Preview production build locally
+npm test             # Run tests (Vitest)
+npm run test:watch   # Run tests in watch mode
+npm run lint         # Lint src/ with ESLint
+npm run format       # Format src/ with Prettier
+```
 
-There is **no** package.json, no npm, no build step, no bundler, no testing framework, no linter configuration.
+## Design System
 
-## Design System / Styling Conventions
+Defined via CSS custom properties in `src/index.css`:
 
-The visual design is defined in `stylesheets/custom.css`, overriding the base GitHub Pages theme in `stylesheets/stylesheet.css`.
+| Variable | Value | Usage |
+|---|---|---|
+| `--color-primary` | `#1abc9c` | Accent, links, highlights |
+| `--color-primary-dark` | `#16a085` | Hover states |
+| `--color-header` | `#2c3e50` | Header background |
+| `--color-text` | `#ecf0f1` | Primary text |
+| `--color-text-muted` | `#95a5a6` | Secondary text |
+| `--color-bg-dark` | `#0a0a1a` | App background |
+| `--color-bg-panel` | `rgba(15,15,35,0.9)` | Panel backgrounds |
+| `--color-border` | `rgba(26,188,156,0.3)` | Borders |
 
-- **Color palette:**
-  - Header background: `#2c3e50` (dark blue-gray)
-  - Accent / links: `#1abc9c` (teal)
-  - Text: `#333` (body), `#555` (paragraphs), `#7f8c8d` (muted/company info)
-  - Borders / list items background: `#ecf0f1` (light gray)
-  - Body background: `#fff`
-- **Typography:** Helvetica Neue / Helvetica / Arial / sans-serif
-- **Layout:** 80% width container, centered, with box-shadow card for main content
-- **Convention:** `custom.css` uses `!important` extensively to override the base theme. Follow this pattern when adding new styles.
+## Data Model
 
-## Content Structure (index.html)
+Events are JSON objects in `src/data/events/`. Each event has:
 
-The page contains:
-1. **Header** — site title "Jeregoupix" with a GitHub profile link (currently hidden via CSS)
-2. **About Me** — brief introduction
-3. **Experience** — list of `.job` div blocks, each containing:
-   - `<h3>` — job title
-   - `<p class="company-info">` — company, dates, location
-   - Optional `<ul>` with bullet points describing responsibilities
-   - Optional `<p><strong>Skills:</strong> ...</p>`
+```typescript
+interface HistoricalEvent {
+  id: string;              // Unique slug, e.g. "gutenberg-printing-press"
+  title: string;           // Display name
+  year: number;            // Negative for BCE, e.g. -4_500_000_000
+  era: EraId;              // One of 13 era identifiers
+  category: EventCategory; // physics | chemistry | biology | engineering | ...
+  location: { name: string; lat: number; lng: number };
+  protagonist?: string;
+  summary: string;
+  impact?: string;
+  connections?: string[];  // IDs of related events
+  importance: 1 | 2 | 3 | 4 | 5;
+}
+```
 
-When adding new experience entries, follow the existing `.job` div pattern.
+## Architecture Patterns
+
+- **State management:** Zustand store in `src/stores/appStore.ts`. Access via `useAppStore` hook with selectors.
+- **3D scene:** React Three Fiber — all 3D components live in `src/components/Globe/` and `src/components/Scene/`.
+- **Data:** Static JSON files in `src/data/`. Imported directly (no API).
+- **Styling:** Tailwind utility classes + CSS custom properties. Use arbitrary value syntax `bg-[var(--color-bg-panel)]` for custom properties.
 
 ## Git Workflow
 
-- **Primary branch:** `master` (deployed to GitHub Pages)
-- **Remote default branch:** `main` (on GitHub)
-- **Feature branches:** use the pattern `feature/<description>` or `claude/<description>`
-- **Commit messages:** use conventional commit style — e.g., `feat: Update portfolio with professional experience and new style`
-- **PRs:** feature branches are merged via pull requests
-
-## Deployment
-
-Deployment is automatic via GitHub Pages. Pushing to the deployed branch makes changes live — there is no build step or CI pipeline.
-
-**Important:** Since there is no build/test gate, verify changes locally before pushing. Any push to the deployed branch goes live immediately.
-
-## Key Files to Know
-
-| File | Purpose |
-|---|---|
-| `index.html` | The entire site content — this is the file to edit for content changes |
-| `stylesheets/custom.css` | All custom styling — edit this for visual changes |
-| `stylesheets/stylesheet.css` | Base theme — avoid editing; override in `custom.css` instead |
-| `params.json` | GitHub Pages internal file — do not delete or modify |
+- **Primary branch:** `master`
+- **Remote default:** `main`
+- **Feature branches:** `feature/<description>` or `claude/<description>`
+- **Commit messages:** conventional commits — `feat:`, `fix:`, `docs:`, `refactor:`, `test:`
+- **PRs:** feature branches merged via pull requests
 
 ## Guidelines for AI Assistants
 
-- This is a simple static site. Do not introduce build tools, frameworks, or dependencies unless explicitly requested.
-- Preserve the existing HTML structure and CSS class naming conventions (`.job`, `.company-info`, `#experience`, `#main_content`).
-- When adding styles, add them to `custom.css`, not `stylesheet.css`.
-- Use `!important` in `custom.css` when needed to override the base theme (this is the established pattern).
-- Keep the site accessible — use semantic HTML elements and maintain good contrast ratios.
-- The `params.json` file is used internally by GitHub Pages — never delete it.
-- Content is in French date format (e.g., "Sept. 2021 - Apr. 2025") but English language.
+- Run `npm run build` after significant changes to verify TypeScript + build.
+- Run `npm test` after modifying utilities or logic.
+- Add new events to `src/data/events/` following the `HistoricalEvent` type schema.
+- New components go in the appropriate `src/components/` subdirectory.
+- Keep 3D components lightweight — heavy computation should be in `src/utils/`.
+- Use Zustand selectors to avoid unnecessary re-renders: `useAppStore((s) => s.specificField)`.
+- Content language: French. Code/comments: English.
+- The `legacy-portfolio/` directory contains the original static portfolio — do not modify.

@@ -1,0 +1,12 @@
+[
+  { "id": "physics", "label": "Physique", "icon": "atom", "color": "#3498db" },
+  { "id": "chemistry", "label": "Chimie", "icon": "flask", "color": "#e74c3c" },
+  { "id": "biology", "label": "Biologie", "icon": "dna", "color": "#2ecc71" },
+  { "id": "engineering", "label": "Ingénierie", "icon": "cog", "color": "#e67e22" },
+  { "id": "mathematics", "label": "Mathématiques", "icon": "calculator", "color": "#9b59b6" },
+  { "id": "astronomy", "label": "Astronomie", "icon": "star", "color": "#f1c40f" },
+  { "id": "medicine", "label": "Médecine", "icon": "heart", "color": "#e91e63" },
+  { "id": "computing", "label": "Informatique", "icon": "cpu", "color": "#00bcd4" },
+  { "id": "geology", "label": "Géologie", "icon": "mountain", "color": "#795548" },
+  { "id": "general", "label": "Général", "icon": "book", "color": "#95a5a6" }
+]

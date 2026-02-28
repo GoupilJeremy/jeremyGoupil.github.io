@@ -1,0 +1,93 @@
+[
+  {
+    "id": "formation",
+    "label": "Formation de la Terre",
+    "startYear": -4500000000,
+    "endYear": -3800000000,
+    "color": "#e74c3c"
+  },
+  {
+    "id": "origin-of-life",
+    "label": "Origine de la vie",
+    "startYear": -3800000000,
+    "endYear": -540000000,
+    "color": "#e67e22"
+  },
+  {
+    "id": "cambrian",
+    "label": "Explosion cambrienne",
+    "startYear": -540000000,
+    "endYear": -250000000,
+    "color": "#f1c40f"
+  },
+  {
+    "id": "dinosaurs",
+    "label": "Ère des dinosaures",
+    "startYear": -250000000,
+    "endYear": -66000000,
+    "color": "#2ecc71"
+  },
+  {
+    "id": "mammals",
+    "label": "Montée des mammifères",
+    "startYear": -66000000,
+    "endYear": -2500000,
+    "color": "#1abc9c"
+  },
+  {
+    "id": "prehistory",
+    "label": "Préhistoire",
+    "startYear": -2500000,
+    "endYear": -3000,
+    "color": "#3498db"
+  },
+  {
+    "id": "antiquity",
+    "label": "Antiquité",
+    "startYear": -3000,
+    "endYear": 476,
+    "color": "#9b59b6"
+  },
+  {
+    "id": "medieval",
+    "label": "Moyen Âge",
+    "startYear": 476,
+    "endYear": 1453,
+    "color": "#8e44ad"
+  },
+  {
+    "id": "renaissance",
+    "label": "Renaissance",
+    "startYear": 1453,
+    "endYear": 1687,
+    "color": "#e74c3c"
+  },
+  {
+    "id": "enlightenment",
+    "label": "Lumières",
+    "startYear": 1687,
+    "endYear": 1789,
+    "color": "#f39c12"
+  },
+  {
+    "id": "industrial",
+    "label": "Révolution industrielle",
+    "startYear": 1789,
+    "endYear": 1914,
+    "color": "#d35400"
+  },
+  {
+    "id": "modern",
+    "label": "Ère moderne",
+    "startYear": 1914,
+    "endYear": 1970,
+    "color": "#2980b9"
+  },
+  {
+    "id": "contemporary",
+    "label": "Ère contemporaine",
+    "startYear": 1970,
+    "endYear": 2026,
+    "color": "#1abc9c"
+  }
+]
