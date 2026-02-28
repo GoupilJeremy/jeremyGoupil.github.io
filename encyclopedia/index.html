@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Encyclopédie interactive 3D de l'histoire de la Terre et de l'humanité — sciences et technologies" />
+  <title>Encyclopédie 3D — Histoire de la Terre & de l'Humanité</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #020408;
+      --text: #e8eaf6;
+      --accent: #64b5f6;
+      --accent2: #a5d6a7;
+      --accent3: #ffcc80;
+      --panel-bg: rgba(8, 15, 30, 0.85);
+      --border: rgba(100, 181, 246, 0.25);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    #canvas-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* ── Header ── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 28px;
+      background: linear-gradient(to bottom, rgba(2,4,8,0.9) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    #header h1 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.9;
+    }
+
+    #header h1 span {
+      color: var(--text);
+      opacity: 0.5;
+      font-size: 0.75rem;
+      display: block;
+      letter-spacing: 0.05em;
+      text-transform: none;
+    }
+
+    /* ── Timeline bar ── */
+    #timeline {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 16px 28px 20px;
+      background: linear-gradient(to top, rgba(2,4,8,0.95) 0%, transparent 100%);
+    }
+
+    #timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    #timeline-track {
+      position: relative;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    #timeline-progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #4a90e2, var(--accent2));
+      border-radius: 2px;
+      transition: width 0.1s ease;
+    }
+
+    #timeline-cursor {
+      position: absolute;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      background: white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      left: 0%;
+      box-shadow: 0 0 8px var(--accent);
+      transition: left 0.1s ease;
+    }
+
+    #current-era {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ── Category filters ── */
+    #filters {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .filter-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(100, 181, 246, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Detail panel ── */
+    #detail-panel {
+      position: fixed;
+      top: 50%;
+      left: 28px;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 300px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #detail-panel.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #detail-panel .close-btn {
+      position: absolute;
+      top: 12px; right: 14px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    #detail-panel .close-btn:hover { color: white; }
+
+    #detail-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    #detail-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    #detail-date {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 12px;
+    }
+
+    #detail-description {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.75);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    #detail-connections {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .connection-tag {
+      font-size: 0.62rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 10px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── Loading screen ── */
+    #loading {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.8s ease;
+    }
+
+    #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #loading h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .loader-ring {
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(100, 181, 246, 0.15);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #loading p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Tooltip ── */
+    #tooltip {
+      position: fixed;
+      z-index: 20;
+      pointer-events: none;
+      background: rgba(8,15,30,0.92);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.75rem;
+      max-width: 200px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.15s, transform 0.15s;
+      backdrop-filter: blur(8px);
+    }
+
+    #tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #tooltip strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    #tooltip small {
+      color: rgba(255,255,255,0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div id="loading">
+    <div class="loader-ring"></div>
+    <h2>Encyclopédie 3D</h2>
+    <p>Chargement de l'univers…</p>
+  </div>
+
+  <!-- Three.js canvas -->
+  <div id="canvas-container"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <h1>
+      Encyclopédie de la Terre
+      <span>Sciences &amp; Technologies · 13.8 milliards d'années</span>
+    </h1>
+  </header>
+
+  <!-- Category filters -->
+  <nav id="filters">
+    <button class="filter-btn active" data-category="all">Tout</button>
+    <button class="filter-btn" data-category="cosmologie">Cosmologie</button>
+    <button class="filter-btn" data-category="géologie">Géologie</button>
+    <button class="filter-btn" data-category="biologie">Biologie</button>
+    <button class="filter-btn" data-category="civilisations">Civilisations</button>
+    <button class="filter-btn" data-category="sciences">Sciences</button>
+    <button class="filter-btn" data-category="technologies">Technologies</button>
+  </nav>
+
+  <!-- Detail panel -->
+  <aside id="detail-panel">
+    <button class="close-btn" id="detail-close">✕</button>
+    <div id="detail-category"></div>
+    <div id="detail-title"></div>
+    <div id="detail-date"></div>
+    <div id="detail-description"></div>
+    <div id="detail-connections"></div>
+  </aside>
+
+  <!-- Tooltip -->
+  <div id="tooltip">
+    <strong id="tooltip-title"></strong>
+    <small id="tooltip-date"></small>
+  </div>
+
+  <!-- Timeline -->
+  <div id="timeline">
+    <div id="timeline-labels">
+      <span>Big Bang −13.8 Ga</span>
+      <span>Terre −4.5 Ga</span>
+      <span>Vie −3.8 Ga</span>
+      <span>Humains −300 Ka</span>
+      <span>Civilisations −10 Ka</span>
+      <span>Aujourd'hui</span>
+    </div>
+    <div id="timeline-track">
+      <div id="timeline-progress"></div>
+      <div id="timeline-cursor"></div>
+    </div>
+    <div id="current-era">Big Bang</div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
