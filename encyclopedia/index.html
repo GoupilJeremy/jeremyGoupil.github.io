@@ -13,9 +13,8 @@
       --text: #e8eaf6;
       --accent: #64b5f6;
       --accent2: #a5d6a7;
-      --accent3: #ffcc80;
-      --panel-bg: rgba(8, 15, 30, 0.85);
-      --border: rgba(100, 181, 246, 0.25);
+      --panel-bg: rgba(8, 15, 30, 0.88);
+      --border: rgba(100, 181, 246, 0.22);
     }
 
     body {
@@ -27,17 +26,8 @@
       width: 100vw;
     }
 
-    #canvas-container {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    canvas {
-      display: block;
-      width: 100% !important;
-      height: 100% !important;
-    }
+    #canvas-container { position: fixed; inset: 0; z-index: 0; }
+    canvas { display: block; width: 100% !important; height: 100% !important; }
 
     /* ── Header ── */
     #header {
@@ -47,111 +37,85 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 28px;
-      background: linear-gradient(to bottom, rgba(2,4,8,0.9) 0%, transparent 100%);
-      pointer-events: none;
+      padding: 14px 24px;
+      background: linear-gradient(to bottom, rgba(2,4,8,0.92) 0%, transparent 100%);
     }
-
     #header h1 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
-      opacity: 0.9;
     }
-
     #header h1 span {
-      color: var(--text);
-      opacity: 0.5;
-      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.68rem;
       display: block;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: none;
+      margin-top: 1px;
     }
 
-    /* ── Timeline bar ── */
-    #timeline {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 10;
-      padding: 16px 28px 20px;
-      background: linear-gradient(to top, rgba(2,4,8,0.95) 0%, transparent 100%);
-    }
-
-    #timeline-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    #timeline-track {
-      position: relative;
-      height: 3px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 2px;
-      cursor: pointer;
-    }
-
-    #timeline-progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(to right, #4a90e2, var(--accent2));
-      border-radius: 2px;
-      transition: width 0.1s ease;
-    }
-
-    #timeline-cursor {
-      position: absolute;
-      top: 50%;
-      width: 12px;
-      height: 12px;
-      background: white;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      left: 0%;
-      box-shadow: 0 0 8px var(--accent);
-      transition: left 0.1s ease;
-    }
-
-    #current-era {
-      text-align: center;
+    /* ── View switcher ── */
+    #view-switcher { display: flex; gap: 6px; }
+    .view-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.45);
       font-size: 0.7rem;
-      color: var(--accent);
       letter-spacing: 0.1em;
-      margin-top: 10px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
       text-transform: uppercase;
+    }
+    .view-btn:hover { color: var(--text); border-color: rgba(100,181,246,0.5); }
+    .view-btn.active {
+      background: rgba(100,181,246,0.14);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* ── Category filters ── */
     #filters {
       position: fixed;
-      top: 70px;
-      right: 20px;
+      top: 68px; right: 18px;
       z-index: 10;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
-
     .filter-btn {
       background: var(--panel-bg);
       border: 1px solid var(--border);
       color: var(--text);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
+      font-size: 0.67rem;
+      letter-spacing: 0.07em;
       padding: 5px 10px;
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.2s;
       backdrop-filter: blur(8px);
     }
-
+    .filter-btn::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-right: 6px;
+      opacity: 0.7;
+    }
+    .filter-btn[data-category="all"]::before           { background: #fff; }
+    .filter-btn[data-category="cosmologie"]::before    { background: #64b5f6; }
+    .filter-btn[data-category="géologie"]::before      { background: #a5d6a7; }
+    .filter-btn[data-category="biologie"]::before      { background: #80cbc4; }
+    .filter-btn[data-category="civilisations"]::before { background: #ffcc80; }
+    .filter-btn[data-category="sciences"]::before      { background: #ce93d8; }
+    .filter-btn[data-category="technologies"]::before  { background: #f48fb1; }
     .filter-btn:hover, .filter-btn.active {
-      background: rgba(100, 181, 246, 0.15);
+      background: rgba(100,181,246,0.12);
       border-color: var(--accent);
       color: var(--accent);
     }
@@ -159,181 +123,206 @@
     /* ── Detail panel ── */
     #detail-panel {
       position: fixed;
-      top: 50%;
-      left: 28px;
+      top: 50%; left: 24px;
       transform: translateY(-50%);
       z-index: 10;
       width: 300px;
       background: var(--panel-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 20px;
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
     }
-
-    #detail-panel.visible {
-      opacity: 1;
-      pointer-events: all;
-    }
-
+    #detail-panel.visible { opacity: 1; pointer-events: all; }
     #detail-panel .close-btn {
       position: absolute;
       top: 12px; right: 14px;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.4);
-      cursor: pointer;
-      font-size: 1rem;
-      line-height: 1;
+      background: none; border: none;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer; font-size: 1rem;
     }
-
     #detail-panel .close-btn:hover { color: white; }
-
     #detail-category {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-
-    #detail-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-
-    #detail-date {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.45);
+    #detail-title { font-size: 1rem; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+    #detail-date  { font-size: 0.73rem; color: rgba(255,255,255,0.42); margin-bottom: 6px; }
+    #detail-location {
+      font-size: 0.69rem;
+      color: var(--accent2);
       margin-bottom: 12px;
     }
-
     #detail-description {
-      font-size: 0.8rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.75);
+      font-size: 0.79rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.72);
       border-top: 1px solid var(--border);
       padding-top: 12px;
     }
-
-    #detail-connections {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-
+    #detail-connections { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
     .connection-tag {
-      font-size: 0.62rem;
-      background: rgba(255,255,255,0.06);
+      font-size: 0.61rem;
+      background: rgba(255,255,255,0.05);
       border: 1px solid var(--border);
       padding: 2px 8px;
       border-radius: 10px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: all 0.15s;
     }
-
-    /* ── Loading screen ── */
-    #loading {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      transition: opacity 0.8s ease;
-    }
-
-    #loading.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    #loading h2 {
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+    .connection-tag:hover {
+      background: rgba(100,181,246,0.1);
+      border-color: var(--accent);
       color: var(--accent);
-    }
-
-    .loader-ring {
-      width: 48px;
-      height: 48px;
-      border: 2px solid rgba(100, 181, 246, 0.15);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    #loading p {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.05em;
     }
 
     /* ── Tooltip ── */
     #tooltip {
-      position: fixed;
-      z-index: 20;
+      position: fixed; z-index: 20;
       pointer-events: none;
-      background: rgba(8,15,30,0.92);
+      background: rgba(8,15,30,0.94);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 8px 12px;
-      font-size: 0.75rem;
-      max-width: 200px;
+      font-size: 0.74rem;
+      max-width: 210px;
       opacity: 0;
       transform: translateY(4px);
       transition: opacity 0.15s, transform 0.15s;
       backdrop-filter: blur(8px);
     }
+    #tooltip.visible { opacity: 1; transform: translateY(0); }
+    #tooltip strong { display: block; color: var(--accent); margin-bottom: 2px; }
+    #tooltip small  { color: rgba(255,255,255,0.42); }
 
-    #tooltip.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* ── Timeline ── */
+    #timeline {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 14px 24px 18px;
+      background: linear-gradient(to top, rgba(2,4,8,0.96) 0%, transparent 100%);
+    }
+    #timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.61rem;
+      color: rgba(255,255,255,0.26);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    #timeline-track {
+      position: relative;
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #timeline-progress {
+      height: 100%; width: 0%;
+      background: linear-gradient(to right, #3a70d0, var(--accent2));
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    #timeline-cursor {
+      position: absolute;
+      top: 50%; left: 0%;
+      width: 11px; height: 11px;
+      background: white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 8px var(--accent);
+      pointer-events: none;
     }
 
-    #tooltip strong {
-      display: block;
+    /* ── Bottom bar ── */
+    #bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    #current-era {
+      font-size: 0.67rem;
       color: var(--accent);
-      margin-bottom: 2px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      min-width: 200px;
     }
 
-    #tooltip small {
-      color: rgba(255,255,255,0.45);
+    /* ── Presentation controls ── */
+    #presentation-controls { display: flex; align-items: center; gap: 7px; }
+    .ctrl-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.5);
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.78rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
     }
+    .ctrl-btn:hover { color: white; border-color: var(--accent); }
+    .ctrl-btn.active { background: rgba(100,181,246,0.18); border-color: var(--accent); color: var(--accent); }
+    #speed-label { font-size: 0.63rem; color: rgba(255,255,255,0.28); min-width: 24px; text-align: center; }
+    #event-counter { font-size: 0.63rem; color: rgba(255,255,255,0.28); min-width: 56px; text-align: right; }
+
+    /* ── Loading ── */
+    #loading {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 18px;
+      transition: opacity 0.8s ease;
+    }
+    #loading.hidden { opacity: 0; pointer-events: none; }
+    #loading h2 {
+      font-size: 1rem; font-weight: 300;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    #loading-detail { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.05em; }
+    .loader-ring {
+      width: 44px; height: 44px;
+      border: 2px solid rgba(100,181,246,0.12);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <!-- Loading screen -->
   <div id="loading">
     <div class="loader-ring"></div>
     <h2>Encyclopédie 3D</h2>
-    <p>Chargement de l'univers…</p>
+    <div id="loading-detail">Chargement de l'univers…</div>
   </div>
 
-  <!-- Three.js canvas -->
   <div id="canvas-container"></div>
 
-  <!-- Header -->
   <header id="header">
     <h1>
       Encyclopédie de la Terre
-      <span>Sciences &amp; Technologies · 13.8 milliards d'années</span>
+      <span>Sciences &amp; Technologies · 13.8 milliards d'années · <span id="event-total">—</span> événements</span>
     </h1>
+    <div id="view-switcher">
+      <button class="view-btn active" data-view="cosmos">◉ Spirale</button>
+      <button class="view-btn" data-view="globe">⊕ Globe</button>
+    </div>
   </header>
 
-  <!-- Category filters -->
   <nav id="filters">
     <button class="filter-btn active" data-category="all">Tout</button>
     <button class="filter-btn" data-category="cosmologie">Cosmologie</button>
@@ -344,37 +333,45 @@
     <button class="filter-btn" data-category="technologies">Technologies</button>
   </nav>
 
-  <!-- Detail panel -->
   <aside id="detail-panel">
     <button class="close-btn" id="detail-close">✕</button>
     <div id="detail-category"></div>
     <div id="detail-title"></div>
     <div id="detail-date"></div>
+    <div id="detail-location"></div>
     <div id="detail-description"></div>
     <div id="detail-connections"></div>
   </aside>
 
-  <!-- Tooltip -->
   <div id="tooltip">
     <strong id="tooltip-title"></strong>
     <small id="tooltip-date"></small>
   </div>
 
-  <!-- Timeline -->
   <div id="timeline">
     <div id="timeline-labels">
       <span>Big Bang −13.8 Ga</span>
-      <span>Terre −4.5 Ga</span>
       <span>Vie −3.8 Ga</span>
       <span>Humains −300 Ka</span>
-      <span>Civilisations −10 Ka</span>
+      <span>Civilisations</span>
+      <span>Révolution industrielle</span>
       <span>Aujourd'hui</span>
     </div>
     <div id="timeline-track">
       <div id="timeline-progress"></div>
       <div id="timeline-cursor"></div>
     </div>
-    <div id="current-era">Big Bang</div>
+    <div id="bottom-bar">
+      <div id="current-era">Big Bang</div>
+      <div id="presentation-controls">
+        <button class="ctrl-btn" id="btn-prev" title="Précédent">◀</button>
+        <button class="ctrl-btn" id="btn-play" title="Lecture">▶</button>
+        <button class="ctrl-btn" id="btn-next" title="Suivant">▶▶</button>
+        <button class="ctrl-btn" id="btn-speed" title="Vitesse">⚡</button>
+        <span id="speed-label">×1</span>
+        <span id="event-counter">— / —</span>
+      </div>
+    </div>
   </div>
 
   <script type="module" src="./src/main.js"></script>
