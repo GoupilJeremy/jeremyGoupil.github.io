@@ -1,24 +1,24 @@
+import cosmos      from './events/cosmos.json'
+import prehistoric from './events/prehistoric.json'
+import antiquity   from './events/antiquity.json'
+import medieval    from './events/medieval.json'
+import modern      from './events/modern.json'
+import digital     from './events/digital.json'
+
 /**
- * Loads and merges all event JSON files.
- * Returns a sorted array of events (oldest first).
+ * Returns all events sorted oldest-first.
+ * JSON files are bundled at build time (Vite handles JSON imports).
  */
 export async function loadEvents() {
-  const files = [
-    './src/data/events/cosmos.json',
-    './src/data/events/prehistoric.json',
-    './src/data/events/antiquity.json',
-    './src/data/events/medieval.json',
-    './src/data/events/modern.json',
-    './src/data/events/digital.json',
+  const all = [
+    ...cosmos,
+    ...prehistoric,
+    ...antiquity,
+    ...medieval,
+    ...modern,
+    ...digital,
   ]
 
-  const results = await Promise.all(
-    files.map(f => fetch(f).then(r => r.json()))
-  )
-
-  const all = results.flat()
-
-  // Sort by year (most negative = oldest)
   all.sort((a, b) => a.date.year - b.date.year)
 
   return all
