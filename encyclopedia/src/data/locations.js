@@ -1,0 +1,87 @@
+/**
+ * Geographic locations for events.
+ * Events without a single meaningful location (cosmic, global) are omitted.
+ * Format: { lat, lon, name }
+ */
+export const EVENT_LOCATIONS = {
+  // ── Préhistoire ──────────────────────────────────────────────────────
+  'australopitheque':     { lat:  9.0,  lon:  40.0, name: 'Éthiopie (Rift africain)' },
+  'premiers-outils':     { lat:  3.5,  lon:  36.0, name: 'Lomekwi, Kenya' },
+  'homo-habilis':        { lat: -2.8,  lon:  35.4, name: 'Olduvai, Tanzanie' },
+  'homo-erectus':        { lat:  1.0,  lon:  37.0, name: 'Afrique de l\'Est' },
+  'maitrise-feu':        { lat:  0.0,  lon:  36.0, name: 'Afrique de l\'Est' },
+  'homo-sapiens':        { lat: 33.0,  lon:  -5.0, name: 'Jebel Irhoud, Maroc' },
+  'art-rupestre':        { lat: 44.9,  lon:   1.0, name: 'Lascaux / Périgord, France' },
+  'domestication-chien': { lat: 39.0,  lon:  34.0, name: 'Anatolie / Proche-Orient' },
+  'revolution-agricole': { lat: 31.9,  lon:  35.4, name: 'Jéricho, Proche-Orient' },
+  'ceramique':           { lat: 35.0,  lon:  38.0, name: 'Proche-Orient (Syrie / Irak)' },
+  'elevage':             { lat: 37.0,  lon:  40.0, name: 'Anatolie du Sud-Est' },
+  'metallurgie-cuivre':  { lat: 42.0,  lon:  23.0, name: 'Balkans (Varna, Bulgarie)' },
+
+  // ── Antiquité ────────────────────────────────────────────────────────
+  'premieres-villes':        { lat: 31.3,  lon:  46.1, name: 'Uruk, Mésopotamie (Irak)' },
+  'roue':                    { lat: 33.3,  lon:  44.4, name: 'Mésopotamie (Irak)' },
+  'invention-ecriture':      { lat: 31.3,  lon:  46.1, name: 'Sumer, Mésopotamie (Irak)' },
+  'metallurgie-bronze':      { lat: 38.0,  lon:  34.0, name: 'Anatolie (Turquie)' },
+  'pyramides':               { lat: 29.98, lon:  31.13, name: 'Gizeh, Égypte' },
+  'mathematiques-egyptiennes':{ lat: 30.0, lon:  31.2, name: 'Thèbes / Memphis, Égypte' },
+  'mathematiques-babyloniennes':{ lat: 32.5,lon:  44.4, name: 'Babylone (Irak)' },
+  'metallurgie-fer':         { lat: 39.0,  lon:  33.0, name: 'Anatolie (Turquie)' },
+  'alphabet-phenicien':      { lat: 33.9,  lon:  35.5, name: 'Byblos / Tyr, Liban' },
+  'philosophie-grecque':     { lat: 37.97, lon:  23.72, name: 'Milet / Athènes, Grèce' },
+  'theoreme-pythagore':      { lat: 37.58, lon:  26.88, name: 'Samos / Crotone, Grèce' },
+  'hippocrate-medecine':     { lat: 36.89, lon:  27.29, name: 'Cos, Grèce' },
+  'euclide-geometrie':       { lat: 31.2,  lon:  29.95, name: 'Alexandrie, Égypte' },
+  'archimede':               { lat: 37.07, lon:  15.28, name: 'Syracuse, Sicile' },
+  'route-soie':              { lat: 34.27, lon: 108.93, name: 'Xi\'an, Chine' },
+  'genie-romain':            { lat: 41.9,  lon:  12.49, name: 'Rome, Italie' },
+  'papier-chine':            { lat: 34.68, lon: 112.45, name: 'Luoyang, Chine' },
+  'zero-inde':               { lat: 20.0,  lon:  78.0,  name: 'Inde (Ujjain)' },
+
+  // ── Médiéval ─────────────────────────────────────────────────────────
+  'algebre':                 { lat: 33.34, lon:  44.40, name: 'Bagdad, Irak (Maison de la Sagesse)' },
+  'age-or-islamique':        { lat: 33.34, lon:  44.40, name: 'Bagdad, Irak' },
+  'optique-ibn-al-haytham':  { lat: 30.06, lon:  31.25, name: 'Le Caire, Égypte' },
+  'boussole':                { lat: 35.86, lon: 104.19, name: 'Chine (Hunan)' },
+  'architecture-gothique':   { lat: 48.85, lon:   2.35, name: 'Paris, France (Notre-Dame)' },
+  'horloge-mecanique':       { lat: 51.51, lon:  -0.13, name: 'Angleterre / Europe du Nord' },
+  'lunettes':                { lat: 43.77, lon:  11.25, name: 'Florence, Italie' },
+  'poudre-armes':            { lat: 48.2,  lon:  16.37, name: 'Europe centrale' },
+  'peste-noire':             { lat: 43.3,  lon:   5.37, name: 'Marseille, France (point d\'entrée)' },
+  'presse-gutenberg':        { lat: 49.99, lon:   8.27, name: 'Mayence, Allemagne' },
+  'renaissance-art-science': { lat: 43.77, lon:  11.25, name: 'Florence, Italie' },
+
+  // ── Moderne ──────────────────────────────────────────────────────────
+  'copernic-heliocentrisme': { lat: 54.36, lon:  19.68, name: 'Frombork, Pologne' },
+  'galilee-telescope':       { lat: 43.77, lon:  11.25, name: 'Florence / Padoue, Italie' },
+  'newton-gravitation':      { lat: 52.20, lon:   0.12, name: 'Cambridge, Angleterre' },
+  'machine-vapeur':          { lat: 52.48, lon:  -1.89, name: 'Birmingham, Angleterre' },
+  'lavoisier-chimie':        { lat: 48.85, lon:   2.35, name: 'Paris, France' },
+  'vaccination-jenner':      { lat: 51.70, lon:  -2.45, name: 'Berkeley, Angleterre' },
+  'batterie-volta':          { lat: 45.82, lon:   8.83, name: 'Côme, Italie' },
+  'darwin-evolution':        { lat: 51.51, lon:  -0.13, name: 'Londres, Angleterre' },
+  'tableau-periodique':      { lat: 59.95, lon:  30.32, name: 'Saint-Pétersbourg, Russie' },
+  'maxwell-electromagnetisme':{ lat: 55.95, lon:  -3.19, name: 'Édimbourg, Écosse' },
+  'pasteur-microbes':        { lat: 48.85, lon:   2.35, name: 'Paris, France' },
+  'telephone-bell':          { lat: 42.36, lon: -71.06, name: 'Boston, États-Unis' },
+  'ampoule-edison':          { lat: 40.74, lon: -74.24, name: 'Menlo Park, New Jersey, États-Unis' },
+  'rayons-x':                { lat: 49.45, lon:  11.08, name: 'Würzburg, Allemagne' },
+  'radio-marconi':           { lat: 44.31, lon:  11.22, name: 'Bologne, Italie' },
+
+  // ── Numérique ────────────────────────────────────────────────────────
+  'freres-wright':           { lat: 36.02, lon: -75.67, name: 'Kitty Hawk, Caroline du Nord, États-Unis' },
+  'einstein-relativite':     { lat: 46.95, lon:   7.45, name: 'Berne, Suisse' },
+  'mecanique-quantique':     { lat: 53.11, lon:   8.80, name: 'Göttingen / Copenhague' },
+  'penicilline':             { lat: 51.51, lon:  -0.13, name: 'Londres, Angleterre (St. Mary\'s Hospital)' },
+  'turing-machine':          { lat: 52.20, lon:   0.12, name: 'Cambridge, Angleterre' },
+  'fission-nucleaire':       { lat: 41.79, lon: -87.60, name: 'Chicago, États-Unis (Chicago Pile-1)' },
+  'transistor':              { lat: 40.67, lon: -74.44, name: 'Murray Hill, New Jersey, États-Unis (Bell Labs)' },
+  'adn-double-helice':       { lat: 52.20, lon:   0.12, name: 'Cambridge, Angleterre (Cavendish Lab)' },
+  'conquete-espace':         { lat: 45.96, lon:  63.31, name: 'Baïkonour, Kazakhstan' },
+  'arpanet':                 { lat: 34.05, lon:-118.24, name: 'Los Angeles, États-Unis (UCLA)' },
+  'ordinateur-personnel':    { lat: 37.44, lon:-122.14, name: 'Palo Alto, Californie, États-Unis' },
+  'internet-web':            { lat: 46.23, lon:   6.05, name: 'CERN, Genève, Suisse' },
+  'genome-humain':           { lat: 38.89, lon: -77.04, name: 'Bethesda, Maryland, États-Unis' },
+  'smartphone':              { lat: 37.77, lon:-122.42, name: 'San Francisco, Californie, États-Unis' },
+  'intelligence-artificielle-llm': { lat: 37.77, lon:-122.42, name: 'San Francisco, Californie, États-Unis' },
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "algebre",
+    "era": "medievale",
+    "date": { "year": 820, "label": "820 ap. J.-C." },
+    "category": "sciences",
+    "title": "Al-Khwarizmi — L'algèbre",
+    "description": "Muhammad ibn Musa al-Khwarizmi publie 'Al-Kitāb al-mukhtaṣar fī ḥisāb al-jabr wal-muqābala' (Le livre abrégé sur le calcul par complétion et réduction). Il donne naissance à l'algèbre (al-jabr → algebra) et au concept d'algorithme (son nom latinisé → algorismus). Ces outils structurent toute la mathématique moderne.",
+    "impact": 10,
+    "connections": ["zero-inde", "optique-ibn-al-haytham", "age-or-islamique"]
+  },
+  {
+    "id": "age-or-islamique",
+    "era": "medievale",
+    "date": { "year": 800, "label": "VIIIe–XIIIe siècles" },
+    "category": "sciences",
+    "title": "Âge d'or islamique — Maison de la Sagesse",
+    "description": "La Maison de la Sagesse de Bagdad traduit et développe les savoirs grecs, indiens et perses. Al-Kindi, Al-Farabi, Ibn Sina (médecine), Al-Biruni (géographie, astronomie), Ibn Rushd (philosophie) font progresser toutes les disciplines. Ce pont intellectuel transmet le savoir antique à l'Europe médiévale.",
+    "impact": 9,
+    "connections": ["papier-chine", "algebre", "optique-ibn-al-haytham"]
+  },
+  {
+    "id": "optique-ibn-al-haytham",
+    "era": "medievale",
+    "date": { "year": 1021, "label": "1021 ap. J.-C." },
+    "category": "sciences",
+    "title": "Ibn al-Haytham — Traité d'optique",
+    "description": "Dans son Kitab al-Manazir, Ibn al-Haytham réfute la théorie de l'émission oculaire (les yeux émettent la lumière) et démontre que la vision résulte de la lumière réfléchie par les objets vers l'œil. Il invente la chambre noire et développe une méthode expérimentale rigoureuse — premier scientifique au sens moderne.",
+    "impact": 9,
+    "connections": ["algebre", "age-or-islamique", "lunettes", "galilee-telescope"]
+  },
+  {
+    "id": "boussole",
+    "era": "medievale",
+    "date": { "year": 1040, "label": "XIe siècle" },
+    "category": "technologies",
+    "title": "Boussole magnétique",
+    "description": "Inventée en Chine pour la géomancie puis adoptée pour la navigation maritime, la boussole permet de s'orienter par temps couvert et en haute mer. Transmise aux navigateurs arabes puis européens, elle est un outil fondamental des grandes découvertes qui relient toutes les civilisations du globe.",
+    "impact": 9,
+    "connections": ["age-or-islamique", "moulins-vent"]
+  },
+  {
+    "id": "moulins-vent",
+    "era": "medievale",
+    "date": { "year": 1000, "label": "Xe–XIe siècles" },
+    "category": "technologies",
+    "title": "Moulins à vent et à eau",
+    "description": "Les moulins à eau (mis au point dès l'Antiquité) et à vent (développés au Moyen-Orient puis en Europe) mécanisent le broyage des grains, le sciage du bois et le pompage de l'eau. Première utilisation à grande échelle d'une énergie non humaine et non animale — précurseur de la révolution industrielle.",
+    "impact": 8,
+    "connections": ["boussole", "horloge-mecanique"]
+  },
+  {
+    "id": "architecture-gothique",
+    "era": "medievale",
+    "date": { "year": 1163, "label": "XIIe–XIIIe siècles" },
+    "category": "technologies",
+    "title": "Architecture gothique — Voûtes et arcs-boutants",
+    "description": "L'invention de la voûte d'ogive et de l'arc-boutant libère les murs de leur fonction portante. Les cathédrales gothiques (Notre-Dame, Chartres, Cologne) élèvent des structures de 40+ mètres en pierre avec d'immenses surfaces vitrées. Ce génie structural développe des méthodes de calcul des forces précurseuses de la mécanique.",
+    "impact": 7,
+    "connections": ["moulins-vent", "horloge-mecanique"]
+  },
+  {
+    "id": "horloge-mecanique",
+    "era": "medievale",
+    "date": { "year": 1300, "label": "XIVe siècle" },
+    "category": "technologies",
+    "title": "Horloge mécanique — La mesure du temps",
+    "description": "L'horloge mécanique à échappement, inventée en Europe médiévale, standardise la mesure du temps. Elle transforme l'organisation sociale (horaires, productivité), révolutionne la navigation maritime (longitude) et représente la première machine complexe de précision — modèle conceptuel de toute la mécanique industrielle.",
+    "impact": 9,
+    "connections": ["moulins-vent", "architecture-gothique", "poudre-armes", "presse-gutenberg"]
+  },
+  {
+    "id": "lunettes",
+    "era": "medievale",
+    "date": { "year": 1286, "label": "1286" },
+    "category": "technologies",
+    "title": "Invention des lunettes",
+    "description": "Les premières lunettes à verres convexes sont fabriquées en Italie du Nord vers 1286. Elles permettent aux presbytes de lire et travailler jusqu'à un âge avancé — révolution de productivité intellectuelle. La manipulation des lentilles conduira un siècle plus tard aux premières lunettes à verres concaves, puis au télescope.",
+    "impact": 8,
+    "connections": ["optique-ibn-al-haytham", "horloge-mecanique", "presse-gutenberg"]
+  },
+  {
+    "id": "poudre-armes",
+    "era": "medievale",
+    "date": { "year": 1300, "label": "XIVe siècle" },
+    "category": "technologies",
+    "title": "Poudre à canon et armes à feu",
+    "description": "Inventée en Chine, la poudre à canon atteint l'Europe au XIIIe siècle. Les premières armes à feu (canons, bombardes) révolutionnent la guerre et rendent obsolètes les fortifications médiévales. Les armées permanentes se professionnalisent, redistribuant le pouvoir entre États centralisés.",
+    "impact": 8,
+    "connections": ["horloge-mecanique", "presse-gutenberg"]
+  },
+  {
+    "id": "peste-noire",
+    "era": "medievale",
+    "date": { "year": 1347, "label": "1347–1353" },
+    "category": "biologie",
+    "title": "Peste noire — Pandémie et résilience",
+    "description": "La peste bubonique tue 30 à 60% de la population européenne. La catastrophe démographique provoque une transformation sociale : rareté de la main d'œuvre, hausse des salaires, déclin du système féodal. La pandémie stimule aussi la médecine, l'hygiène publique et paradoxalement la Renaissance italienne.",
+    "impact": 9,
+    "connections": ["horloge-mecanique", "presse-gutenberg"]
+  },
+  {
+    "id": "presse-gutenberg",
+    "era": "medievale",
+    "date": { "year": 1440, "label": "vers 1440" },
+    "category": "technologies",
+    "title": "Presse à imprimer de Gutenberg",
+    "description": "La presse à caractères mobiles métalliques de Gutenberg réduit le coût d'un livre d'un facteur 100. En 50 ans, 8 millions de livres sont imprimés — autant qu'en 1000 ans de copie manuscrite. Cette révolution de l'information diffuse la Réforme protestante, la révolution scientifique et les Lumières.",
+    "impact": 10,
+    "connections": ["lunettes", "horloge-mecanique", "poudre-armes", "copernic-heliocentrisme"]
+  },
+  {
+    "id": "renaissance-art-science",
+    "era": "medievale",
+    "date": { "year": 1450, "label": "XVe siècle" },
+    "category": "sciences",
+    "title": "Renaissance — Art, anatomie et perspective",
+    "description": "Léonard de Vinci incarne la Renaissance : peinture à la perspective géométrique, dissections anatomiques systématiques, études des machines, de l'hydraulique et du vol. La Renaissance rompt avec la scolastique médiévale et restaure la curiosité empirique grecque, préparant directement la révolution scientifique.",
+    "impact": 9,
+    "connections": ["presse-gutenberg", "copernic-heliocentrisme", "lunettes"]
+  }
+]

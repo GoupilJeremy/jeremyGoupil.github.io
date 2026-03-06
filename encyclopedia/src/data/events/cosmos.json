@@ -1,0 +1,202 @@
+[
+  {
+    "id": "big-bang",
+    "era": "cosmique",
+    "date": { "year": -13800000000, "label": "−13.8 milliards d'années" },
+    "category": "cosmologie",
+    "title": "Big Bang",
+    "description": "Naissance de l'univers : en une fraction de seconde, toute l'énergie, l'espace et le temps émergent d'une singularité. L'univers commence à s'étendre et à refroidir, formant les premiers quarks et électrons.",
+    "impact": 10,
+    "connections": ["formation-hydrogene", "formation-etoiles"]
+  },
+  {
+    "id": "formation-hydrogene",
+    "era": "cosmique",
+    "date": { "year": -13799999620, "label": "−13.8 Ga (380 000 ans après le Big Bang)" },
+    "category": "cosmologie",
+    "title": "Formation de l'hydrogène et de l'hélium",
+    "description": "L'univers se refroidit suffisamment pour que les protons capturent des électrons. L'hydrogène et l'hélium — premiers atomes stables — se forment. La lumière peut désormais voyager librement : c'est le fond diffus cosmologique.",
+    "impact": 9,
+    "connections": ["big-bang", "formation-etoiles"]
+  },
+  {
+    "id": "formation-etoiles",
+    "era": "cosmique",
+    "date": { "year": -13500000000, "label": "−13.5 milliards d'années" },
+    "category": "cosmologie",
+    "title": "Premières étoiles (Population III)",
+    "description": "Les premières étoiles géantes se forment par effondrement gravitationnel des nuages d'hydrogène. Extrêmement massives, elles fabriquent par fusion nucléaire les éléments lourds (carbone, oxygène, fer) indispensables à la vie.",
+    "impact": 9,
+    "connections": ["formation-hydrogene", "supernovae", "formation-galaxies"]
+  },
+  {
+    "id": "formation-galaxies",
+    "era": "cosmique",
+    "date": { "year": -13000000000, "label": "−13 milliards d'années" },
+    "category": "cosmologie",
+    "title": "Formation des premières galaxies",
+    "description": "Les étoiles se regroupent sous l'effet de la gravité en proto-galaxies. La Voie Lactée commence à se former, offrant un écosystème stable pour les générations d'étoiles futures.",
+    "impact": 8,
+    "connections": ["formation-etoiles", "formation-soleil"]
+  },
+  {
+    "id": "supernovae",
+    "era": "cosmique",
+    "date": { "year": -12000000000, "label": "−12 milliards d'années" },
+    "category": "cosmologie",
+    "title": "Supernovae — forges des éléments",
+    "description": "Les étoiles massives explosent en supernovae, dispersant dans l'espace les éléments lourds synthétisés en leur cœur. Ces explosions ensemencent le cosmos de fer, calcium, silicium et carbone, matériaux de construction des planètes et de la vie.",
+    "impact": 9,
+    "connections": ["formation-etoiles", "formation-soleil"]
+  },
+  {
+    "id": "formation-soleil",
+    "era": "géologique",
+    "date": { "year": -4600000000, "label": "−4.6 milliards d'années" },
+    "category": "géologie",
+    "title": "Formation du Soleil et du système solaire",
+    "description": "Un nuage de gaz et de poussières interstellaires s'effondre sous sa propre gravité. Le centre devient le Soleil ; le disque résiduel se condense en planètes. Notre système solaire prend forme en quelques millions d'années.",
+    "impact": 10,
+    "connections": ["supernovae", "formation-terre", "formation-lune"]
+  },
+  {
+    "id": "formation-terre",
+    "era": "géologique",
+    "date": { "year": -4540000000, "label": "−4.54 milliards d'années" },
+    "category": "géologie",
+    "title": "Formation de la Terre",
+    "description": "Par accrétion de planétésimaux, la Terre se forme en 10 à 20 millions d'années. La planète est entièrement en fusion (magma global). Les éléments lourds comme le fer coulent vers le centre, formant le noyau métallique.",
+    "impact": 10,
+    "connections": ["formation-soleil", "formation-lune", "differentiation-terrestre"]
+  },
+  {
+    "id": "formation-lune",
+    "era": "géologique",
+    "date": { "year": -4510000000, "label": "−4.51 milliards d'années" },
+    "category": "géologie",
+    "title": "Formation de la Lune — Impact de Théia",
+    "description": "Un corps de la taille de Mars (Théia) percute la proto-Terre. Les débris projetés s'agrègent en orbite pour former la Lune. Cet impact stabilise l'axe de rotation terrestre, condition essentielle pour un climat propice à la vie.",
+    "impact": 8,
+    "connections": ["formation-terre"]
+  },
+  {
+    "id": "differentiation-terrestre",
+    "era": "géologique",
+    "date": { "year": -4400000000, "label": "−4.4 milliards d'années" },
+    "category": "géologie",
+    "title": "Différenciation terrestre et premiers océans",
+    "description": "La Terre se stratifie : noyau de fer-nickel, manteau silicaté, croûte primitive. Le dégazage volcanique libère vapeur d'eau et CO₂. La vapeur se condense en formant les premiers océans, milieu idéal pour l'émergence de la vie.",
+    "impact": 8,
+    "connections": ["formation-terre", "premiere-vie"]
+  },
+  {
+    "id": "premiere-vie",
+    "era": "biologique",
+    "date": { "year": -3800000000, "label": "−3.8 milliards d'années" },
+    "category": "biologie",
+    "title": "Apparition de la vie (LUCA)",
+    "description": "Le dernier ancêtre commun universel (LUCA) — première cellule vivante — apparaît probablement dans les sources hydrothermales. La vie utilise l'ARN puis l'ADN pour stocker l'information, et la membrane cellulaire pour se séparer de l'environnement.",
+    "impact": 10,
+    "connections": ["differentiation-terrestre", "photosynthese", "eucaryotes"]
+  },
+  {
+    "id": "photosynthese",
+    "era": "biologique",
+    "date": { "year": -3500000000, "label": "−3.5 milliards d'années" },
+    "category": "biologie",
+    "title": "Photosynthèse — La révolution de l'énergie solaire",
+    "description": "Les cyanobactéries développent la photosynthèse oxygénique : elles utilisent la lumière solaire pour convertir CO₂ et eau en sucres, libérant de l'oxygène. Ce processus va progressivement transformer l'atmosphère terrestre.",
+    "impact": 9,
+    "connections": ["premiere-vie", "grande-oxydation"]
+  },
+  {
+    "id": "grande-oxydation",
+    "era": "biologique",
+    "date": { "year": -2400000000, "label": "−2.4 milliards d'années" },
+    "category": "géologie",
+    "title": "Grande oxydation — Révolution atmosphérique",
+    "description": "L'accumulation d'oxygène dans l'atmosphère (produit par les cyanobactéries) déclenche la plus grande extinction de l'histoire de la vie anaérobie. Mais cette catastrophe ouvre la voie à des organismes plus complexes utilisant la respiration cellulaire.",
+    "impact": 8,
+    "connections": ["photosynthese", "eucaryotes"]
+  },
+  {
+    "id": "eucaryotes",
+    "era": "biologique",
+    "date": { "year": -2100000000, "label": "−2.1 milliards d'années" },
+    "category": "biologie",
+    "title": "Apparition des cellules eucaryotes",
+    "description": "Une archée engloutit une bactérie sans la digérer : naissance de la première cellule à noyau (eucaryote). Cette symbiose donne les mitochondries — centrales énergétiques cellulaires. Toute vie complexe (plantes, animaux, champignons) en descend.",
+    "impact": 9,
+    "connections": ["grande-oxydation", "pluricellulaires"]
+  },
+  {
+    "id": "pluricellulaires",
+    "era": "biologique",
+    "date": { "year": -800000000, "label": "−800 millions d'années" },
+    "category": "biologie",
+    "title": "Vie multicellulaire complexe",
+    "description": "Des cellules eucaryotes commencent à coopérer en organismes multicellulaires. La spécialisation cellulaire permet l'émergence de tissus, organes et systèmes nerveux primitifs — base de toute la faune visible.",
+    "impact": 9,
+    "connections": ["eucaryotes", "explosion-cambrienne"]
+  },
+  {
+    "id": "explosion-cambrienne",
+    "era": "biologique",
+    "date": { "year": -541000000, "label": "−541 millions d'années" },
+    "category": "biologie",
+    "title": "Explosion cambrienne",
+    "description": "En moins de 25 millions d'années, la quasi-totalité des grands plans d'organisation animaux apparaissent. Arthropodes, vertébrés, mollusques… La compétition évolutive s'emballe, produisant une diversité biologique sans précédent.",
+    "impact": 9,
+    "connections": ["pluricellulaires", "extinction-permien", "premiers-vertebres"]
+  },
+  {
+    "id": "premiers-vertebres",
+    "era": "biologique",
+    "date": { "year": -530000000, "label": "−530 millions d'années" },
+    "category": "biologie",
+    "title": "Premiers vertébrés",
+    "description": "Les premiers poissons sans mâchoires (agnathes) apparaissent, ancêtres de tous les vertébrés actuels. Le développement du crâne et de la colonne vertébrale protège le système nerveux central, ouvrant la voie à l'intelligence.",
+    "impact": 8,
+    "connections": ["explosion-cambrienne", "conquete-terres"]
+  },
+  {
+    "id": "conquete-terres",
+    "era": "biologique",
+    "date": { "year": -375000000, "label": "−375 millions d'années" },
+    "category": "biologie",
+    "title": "Conquête des terres émergées",
+    "description": "Des poissons à nageoires charnues comme Tiktaalik développent des membres primitifs et des poumons rudimentaires. Ils s'aventurent sur terre, ancêtres de tous les tétrapodes : amphibiens, reptiles, oiseaux et mammifères.",
+    "impact": 9,
+    "connections": ["premiers-vertebres", "extinction-permien"]
+  },
+  {
+    "id": "extinction-permien",
+    "era": "biologique",
+    "date": { "year": -252000000, "label": "−252 millions d'années" },
+    "category": "géologie",
+    "title": "Grande extinction du Permien",
+    "description": "96% des espèces marines et 70% des espèces terrestres disparaissent en moins d'un million d'années — la plus grande extinction de l'histoire de la vie. Probablement causée par un volcanisme massif en Sibérie et un emballement climatique.",
+    "impact": 8,
+    "connections": ["conquete-terres", "age-dinosaures"]
+  },
+  {
+    "id": "age-dinosaures",
+    "era": "biologique",
+    "date": { "year": -230000000, "label": "−230 millions d'années" },
+    "category": "biologie",
+    "title": "Âge des dinosaures",
+    "description": "Après l'extinction du Permien, les dinosaures dominent les terres émergées pendant 165 millions d'années. Leur règne permet aux mammifères de rester de petits animaux nocturnes, accumulant une intelligence adaptative qui explosera après la disparition des dinosaures.",
+    "impact": 7,
+    "connections": ["extinction-permien", "extinction-kt"]
+  },
+  {
+    "id": "extinction-kt",
+    "era": "biologique",
+    "date": { "year": -66000000, "label": "−66 millions d'années" },
+    "category": "géologie",
+    "title": "Extinction K-Pg — Astéroïde de Chicxulub",
+    "description": "Un astéroïde de 10 km frappe le Yucatán (Mexique) avec une énergie de 10 milliards de bombes nucléaires. Les dinosaures non-aviens s'éteignent. Les mammifères survivants héritent de la Terre et évoluent rapidement vers les formes actuelles, dont les primates.",
+    "impact": 9,
+    "connections": ["age-dinosaures", "primates"]
+  }
+]

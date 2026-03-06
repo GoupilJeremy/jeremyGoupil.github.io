@@ -1,0 +1,152 @@
+[
+  {
+    "id": "freres-wright",
+    "era": "numerique",
+    "date": { "year": 1903, "label": "1903" },
+    "category": "technologies",
+    "title": "Frères Wright — Premier vol motorisé",
+    "description": "Le 17 décembre 1903, Orville Wright parcourt 36 mètres en 12 secondes à Kitty Hawk. En moins de 70 ans, Neil Armstrong marchera sur la Lune. L'aviation annule les distances, redistribue le commerce mondial, et le moteur à réaction issu de cette invention motorisera la mondialisation du XXe siècle.",
+    "impact": 9,
+    "connections": ["radio-marconi", "einstein-relativite", "conquete-espace"]
+  },
+  {
+    "id": "einstein-relativite",
+    "era": "numerique",
+    "date": { "year": 1905, "label": "1905 (annus mirabilis)" },
+    "category": "sciences",
+    "title": "Einstein — Relativité et E=mc²",
+    "description": "En 1905, Einstein publie 5 articles révolutionnaires : relativité restreinte (E=mc², pas de référentiel absolu), effet photoélectrique (quantification de la lumière), mouvement brownien. En 1915, la relativité générale décrit la gravité comme courbure de l'espace-temps. Ces théories fondent la physique nucléaire, le GPS et la cosmologie moderne.",
+    "impact": 10,
+    "connections": ["maxwell-electromagnetisme", "rayons-x", "mecanique-quantique", "fission-nucleaire"]
+  },
+  {
+    "id": "mecanique-quantique",
+    "era": "numerique",
+    "date": { "year": 1925, "label": "1925–1927" },
+    "category": "sciences",
+    "title": "Mécanique quantique",
+    "description": "Heisenberg, Schrödinger, Bohr et Born formalisent la mécanique quantique : les particules sont décrites par des fonctions d'onde probabilistes, l'incertitude est fondamentale (principe d'Heisenberg), la mesure perturbe le système. Cette théorie, la plus précise de la physique, est à la base du transistor, du laser et de tout l'électronique.",
+    "impact": 10,
+    "connections": ["einstein-relativite", "rayons-x", "transistor", "penicilline"]
+  },
+  {
+    "id": "penicilline",
+    "era": "numerique",
+    "date": { "year": 1928, "label": "1928" },
+    "category": "sciences",
+    "title": "Pénicilline — Fleming",
+    "description": "Alexander Fleming observe qu'une moisissure (Penicillium notatum) détruit les staphylocoques autour d'elle. La pénicilline, développée industriellement par Florey et Chain (1940), permet de traiter les infections bactériennes alors mortelles. Les antibiotiques sauvent des centaines de millions de vies et transforment la médecine.",
+    "impact": 10,
+    "connections": ["pasteur-microbes", "mecanique-quantique", "adn-double-helice"]
+  },
+  {
+    "id": "turing-machine",
+    "era": "numerique",
+    "date": { "year": 1936, "label": "1936" },
+    "category": "sciences",
+    "title": "Turing — Machine universelle et théorie du calcul",
+    "description": "Alan Turing publie 'On Computable Numbers' : il définit la machine de Turing, modèle théorique d'un calculateur universel capable d'exécuter n'importe quel algorithme. Ce concept fonde l'informatique théorique. Pendant la Seconde Guerre mondiale, il brise le code Enigma, sauvant potentiellement des millions de vies.",
+    "impact": 10,
+    "connections": ["mecanique-quantique", "fission-nucleaire", "transistor", "arpanet"]
+  },
+  {
+    "id": "fission-nucleaire",
+    "era": "numerique",
+    "date": { "year": 1945, "label": "1945" },
+    "category": "sciences",
+    "title": "Fission nucléaire — Manhattan Project",
+    "description": "La première réaction en chaîne (Chicago Pile-1, 1942) puis les bombes atomiques (Trinity test, 1945) démontrent qu'E=mc² peut libérer une énergie colossale. L'énergie nucléaire civile produit aujourd'hui 10% de l'électricité mondiale. Cette découverte inaugure l'ère géopolitique de la dissuasion nucléaire.",
+    "impact": 10,
+    "connections": ["einstein-relativite", "turing-machine", "conquete-espace"]
+  },
+  {
+    "id": "transistor",
+    "era": "numerique",
+    "date": { "year": 1947, "label": "1947" },
+    "category": "technologies",
+    "title": "Transistor — Bell Labs",
+    "description": "Shockley, Bardeen et Brattain inventent le transistor au Bell Labs. En remplaçant les tubes à vide encombrants et énergivores, le transistor permet la miniaturisation de l'électronique. La loi de Moore (doublement des transistors tous les 2 ans) mènera à des puces contenant 100 milliards de transistors en 2024.",
+    "impact": 10,
+    "connections": ["mecanique-quantique", "turing-machine", "ordinateur-personnel", "internet-web"]
+  },
+  {
+    "id": "adn-double-helice",
+    "era": "numerique",
+    "date": { "year": 1953, "label": "1953" },
+    "category": "sciences",
+    "title": "ADN — Structure en double hélice",
+    "description": "Watson, Crick (et Franklin, dont les données de diffraction X furent décisives) publient la structure en double hélice de l'ADN. La complémentarité A-T, G-C explique la réplication et la transmission de l'information génétique. Cette découverte fonde la biologie moléculaire, le génie génétique et la médecine personnalisée.",
+    "impact": 10,
+    "connections": ["penicilline", "genome-humain", "intelligence-artificielle-llm"]
+  },
+  {
+    "id": "conquete-espace",
+    "era": "numerique",
+    "date": { "year": 1957, "label": "1957–1969" },
+    "category": "technologies",
+    "title": "Conquête de l'espace — Spoutnik et Apollo",
+    "description": "Spoutnik (1957) est le premier satellite artificiel. Gagarine effectue le premier vol habité (1961). Apollo 11 pose Armstrong sur la Lune (1969). La course à l'espace accélère le développement des ordinateurs, des matériaux composites, des satellites de communication et du GPS — technologies omniprésentes dans la vie moderne.",
+    "impact": 9,
+    "connections": ["fission-nucleaire", "freres-wright", "transistor", "arpanet"]
+  },
+  {
+    "id": "arpanet",
+    "era": "numerique",
+    "date": { "year": 1969, "label": "1969" },
+    "category": "technologies",
+    "title": "ARPANET — L'ancêtre d'Internet",
+    "description": "Le premier message est transmis entre UCLA et Stanford sur ARPANET, réseau militaire décentralisé conçu pour résister à une attaque nucléaire. Le protocole TCP/IP (1983) standardise les échanges entre réseaux. Internet, infrastructure de communication mondiale, devient le système nerveux de la civilisation numérique.",
+    "impact": 10,
+    "connections": ["turing-machine", "conquete-espace", "transistor", "ordinateur-personnel", "internet-web"]
+  },
+  {
+    "id": "ordinateur-personnel",
+    "era": "numerique",
+    "date": { "year": 1975, "label": "1975–1984" },
+    "category": "technologies",
+    "title": "Ordinateur personnel — Apple, IBM, Microsoft",
+    "description": "L'Altair 8800 (1975), l'Apple II (1977) et le IBM PC (1981) démocratisent l'informatique. Bill Gates et Paul Allen fondent Microsoft ; Steve Jobs et Wozniak, Apple. Le PC met un calculateur universel entre les mains de chaque individu, redistribuant radicalement le pouvoir de l'information.",
+    "impact": 10,
+    "connections": ["transistor", "arpanet", "internet-web"]
+  },
+  {
+    "id": "internet-web",
+    "era": "numerique",
+    "date": { "year": 1991, "label": "1991" },
+    "category": "technologies",
+    "title": "World Wide Web — Tim Berners-Lee",
+    "description": "Tim Berners-Lee invente le Web au CERN : HTML, HTTP et URL permettent de créer et lier des pages d'information accessibles depuis n'importe quel ordinateur connecté. Le Web transforme Internet de réseau académique en infrastructure mondiale : commerce électronique, réseaux sociaux, streaming — une nouvelle économie émerge.",
+    "impact": 10,
+    "connections": ["arpanet", "ordinateur-personnel", "smartphone", "genome-humain"]
+  },
+  {
+    "id": "genome-humain",
+    "era": "numerique",
+    "date": { "year": 2003, "label": "2003" },
+    "category": "sciences",
+    "title": "Séquençage du génome humain",
+    "description": "Le Human Genome Project séquence les 3,2 milliards de paires de bases de l'ADN humain après 13 ans et 3 milliards de dollars. Aujourd'hui, un génome complet se séquence en quelques heures pour 200€. Cette carte génétique ouvre la médecine personnalisée, la pharmacogénomique et la compréhension des maladies génétiques.",
+    "impact": 9,
+    "connections": ["adn-double-helice", "internet-web", "intelligence-artificielle-llm"]
+  },
+  {
+    "id": "smartphone",
+    "era": "numerique",
+    "date": { "year": 2007, "label": "2007" },
+    "category": "technologies",
+    "title": "iPhone — L'ordinateur dans la poche",
+    "description": "Steve Jobs présente l'iPhone en 2007 : téléphone + iPod + ordinateur en un appareil tactile. Avec l'App Store (2008) et Android, les smartphones connectent 6 milliards d'humains à Internet. Cette ubiquité transforme la géopolitique de l'information, l'économie des plateformes et les comportements sociaux à l'échelle mondiale.",
+    "impact": 10,
+    "connections": ["internet-web", "ordinateur-personnel", "intelligence-artificielle-llm"]
+  },
+  {
+    "id": "intelligence-artificielle-llm",
+    "era": "numerique",
+    "date": { "year": 2022, "label": "2022–2024" },
+    "category": "technologies",
+    "title": "IA générative — Grands modèles de langage",
+    "description": "GPT-3 (2020), ChatGPT (2022), GPT-4 et Claude (2023) montrent qu'une architecture Transformer entraînée sur de vastes corpus peut raisonner, coder, créer et expliquer. Ces modèles fondamentaux représentent peut-être la rupture technologique la plus rapide de l'histoire humaine, avec des implications profondes sur le travail, la créativité et la science.",
+    "impact": 10,
+    "connections": ["transistor", "internet-web", "smartphone", "genome-humain", "adn-double-helice"]
+  }
+]

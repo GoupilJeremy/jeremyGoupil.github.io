@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: encyclopedia/package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: encyclopedia
+
+      - name: Build encyclopedia
+        run: npm run build
+        working-directory: encyclopedia
+
+      - name: Assemble deployment directory
+        run: |
+          mkdir -p _site/encyclopedia
+
+          # Portfolio root files
+          cp index.html      _site/
+          cp params.json     _site/ 2>/dev/null || true
+          cp -r stylesheets  _site/ 2>/dev/null || true
+          cp -r javascripts  _site/ 2>/dev/null || true
+          cp -r images       _site/ 2>/dev/null || true
+
+          # Built encyclopedia (Vite outputs to encyclopedia/dist/)
+          cp -r encyclopedia/dist/. _site/encyclopedia/
+
+          # Prevent Jekyll from processing the site
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

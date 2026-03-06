@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Encyclopédie interactive 3D de l'histoire de la Terre et de l'humanité — sciences et technologies" />
+  <title>Encyclopédie 3D — Histoire de la Terre & de l'Humanité</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #020408;
+      --text: #e8eaf6;
+      --accent: #64b5f6;
+      --accent2: #a5d6a7;
+      --panel-bg: rgba(8, 15, 30, 0.88);
+      --border: rgba(100, 181, 246, 0.22);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    #canvas-container { position: fixed; inset: 0; z-index: 0; }
+    canvas { display: block; width: 100% !important; height: 100% !important; }
+
+    /* ── Header ── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: linear-gradient(to bottom, rgba(2,4,8,0.92) 0%, transparent 100%);
+    }
+    #header h1 {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    #header h1 span {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.68rem;
+      display: block;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      margin-top: 1px;
+    }
+    #header h1 span span {
+      display: inline;
+    }
+
+    /* ── View switcher ── */
+    #view-switcher { display: flex; gap: 6px; }
+    .view-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+      text-transform: uppercase;
+    }
+    .view-btn:hover { color: var(--text); border-color: rgba(100,181,246,0.5); }
+    .view-btn.active {
+      background: rgba(100,181,246,0.14);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Category filters ── */
+    #filters {
+      position: fixed;
+      top: 68px; right: 18px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .filter-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.67rem;
+      letter-spacing: 0.07em;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .filter-btn::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-right: 6px;
+      opacity: 0.7;
+    }
+    .filter-btn[data-category="all"]::before           { background: #fff; }
+    .filter-btn[data-category="cosmologie"]::before    { background: #64b5f6; }
+    .filter-btn[data-category="géologie"]::before      { background: #a5d6a7; }
+    .filter-btn[data-category="biologie"]::before      { background: #80cbc4; }
+    .filter-btn[data-category="civilisations"]::before { background: #ffcc80; }
+    .filter-btn[data-category="sciences"]::before      { background: #ce93d8; }
+    .filter-btn[data-category="technologies"]::before  { background: #f48fb1; }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(100,181,246,0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Detail panel ── */
+    #detail-panel {
+      position: fixed;
+      top: 50%; left: 24px;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 300px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+    }
+    #detail-panel.visible { opacity: 1; pointer-events: all; }
+    #detail-panel .close-btn {
+      position: absolute;
+      top: 12px; right: 14px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.35);
+      cursor: pointer; font-size: 1rem;
+    }
+    #detail-panel .close-btn:hover { color: white; }
+    #detail-category {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    #detail-title { font-size: 1rem; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+    #detail-date  { font-size: 0.73rem; color: rgba(255,255,255,0.42); margin-bottom: 6px; }
+    #detail-location {
+      font-size: 0.69rem;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
+    #detail-description {
+      font-size: 0.79rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.72);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    #detail-connections { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
+    .connection-tag {
+      font-size: 0.61rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 10px;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .connection-tag:hover {
+      background: rgba(100,181,246,0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Tooltip ── */
+    #tooltip {
+      position: fixed; z-index: 20;
+      pointer-events: none;
+      background: rgba(8,15,30,0.94);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.74rem;
+      max-width: 210px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.15s, transform 0.15s;
+      backdrop-filter: blur(8px);
+    }
+    #tooltip.visible { opacity: 1; transform: translateY(0); }
+    #tooltip strong { display: block; color: var(--accent); margin-bottom: 2px; }
+    #tooltip small  { color: rgba(255,255,255,0.42); }
+
+    /* ── Timeline ── */
+    #timeline {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 14px 24px 18px;
+      background: linear-gradient(to top, rgba(2,4,8,0.96) 0%, transparent 100%);
+    }
+    #timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.61rem;
+      color: rgba(255,255,255,0.26);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    #timeline-track {
+      position: relative;
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #timeline-progress {
+      height: 100%; width: 0%;
+      background: linear-gradient(to right, #3a70d0, var(--accent2));
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    #timeline-cursor {
+      position: absolute;
+      top: 50%; left: 0%;
+      width: 11px; height: 11px;
+      background: white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 8px var(--accent);
+      pointer-events: none;
+    }
+
+    /* ── Bottom bar ── */
+    #bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    #current-era {
+      font-size: 0.67rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      min-width: 200px;
+    }
+
+    /* ── Presentation controls ── */
+    #presentation-controls { display: flex; align-items: center; gap: 7px; }
+    .ctrl-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.5);
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.78rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .ctrl-btn:hover { color: white; border-color: var(--accent); }
+    .ctrl-btn.active { background: rgba(100,181,246,0.18); border-color: var(--accent); color: var(--accent); }
+    #speed-label { font-size: 0.63rem; color: rgba(255,255,255,0.28); min-width: 24px; text-align: center; }
+    #event-counter { font-size: 0.63rem; color: rgba(255,255,255,0.28); min-width: 56px; text-align: right; }
+
+    /* ── UI visibility (hidden until intro exits) ── */
+    #header, #filters, #timeline { opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
+    #header.ui-visible, #filters.ui-visible, #timeline.ui-visible { opacity: 1; pointer-events: all; }
+
+    /* ── Intro ── */
+    #intro {
+      position: fixed; inset: 0; z-index: 50;
+      background: radial-gradient(ellipse at 50% 40%, rgba(6,18,45,0.82) 0%, rgba(2,4,8,0.96) 70%);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 1.2s ease;
+    }
+    #intro.hidden { opacity: 0; pointer-events: none; }
+    #intro::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to top, rgba(2,4,8,1) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    #intro-ring {
+      position: absolute;
+      width: min(70vw, 70vh); height: min(70vw, 70vh);
+      border: 1px solid rgba(100,181,246,0.07);
+      border-radius: 50%;
+      animation: ring-spin 35s linear infinite;
+      pointer-events: none;
+    }
+    #intro-ring::before {
+      content: '';
+      position: absolute; inset: 12%;
+      border: 1px solid rgba(100,181,246,0.05);
+      border-radius: 50%;
+    }
+    #intro-ring::after {
+      content: '';
+      position: absolute; inset: 28%;
+      border: 1px solid rgba(100,181,246,0.04);
+      border-radius: 50%;
+    }
+    @keyframes ring-spin { to { transform: rotate(360deg); } }
+
+    /* Subtle rotating dot on the ring */
+    #intro-ring-dot {
+      position: absolute;
+      width: min(70vw, 70vh); height: min(70vw, 70vh);
+      border-radius: 50%;
+      animation: ring-spin 35s linear infinite;
+      pointer-events: none;
+    }
+    #intro-ring-dot::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      transform: translateX(-50%);
+    }
+
+    #intro-content {
+      position: relative; z-index: 1;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0;
+    }
+    #intro-overline {
+      font-size: 0.65rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(100,181,246,0.55);
+      margin-bottom: 20px;
+    }
+    #intro-title {
+      font-size: clamp(2.2rem, 5.5vw, 4.6rem);
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+    #intro-title em {
+      display: block;
+      font-style: normal;
+      color: var(--accent);
+    }
+    #intro-divider {
+      width: 48px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(100,181,246,0.45), transparent);
+      margin: 18px auto;
+    }
+    #intro-sub {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.28);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    #intro-stats {
+      display: flex; gap: 48px;
+      margin-bottom: 40px;
+    }
+    .intro-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .intro-stat strong {
+      font-size: 1.5rem; font-weight: 200;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .intro-stat strong small {
+      font-size: 0.75em;
+      opacity: 0.7;
+    }
+    .intro-stat span {
+      font-size: 0.57rem; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.28); text-transform: uppercase;
+    }
+    #intro-cta {
+      background: transparent;
+      border: 1px solid rgba(100,181,246,0.35);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      padding: 13px 40px;
+      border-radius: 30px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.25s;
+    }
+    #intro-cta:hover {
+      background: rgba(100,181,246,0.1);
+      border-color: var(--accent);
+      box-shadow: 0 0 28px rgba(100,181,246,0.2), inset 0 0 12px rgba(100,181,246,0.05);
+      color: #fff;
+    }
+
+    /* ── Loading ── */
+    #loading {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 18px;
+      transition: opacity 0.8s ease;
+    }
+    #loading.hidden { opacity: 0; pointer-events: none; }
+    #loading h2 {
+      font-size: 1rem; font-weight: 300;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    #loading-detail { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.05em; }
+    .loader-ring {
+      width: 44px; height: 44px;
+      border: 2px solid rgba(100,181,246,0.12);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <div id="loading">
+    <div class="loader-ring"></div>
+    <h2>Encyclopédie 3D</h2>
+    <div id="loading-detail">Chargement de l'univers…</div>
+  </div>
+
+  <div id="intro" class="hidden">
+    <div id="intro-ring"></div>
+    <div id="intro-ring-dot"></div>
+    <div id="intro-content">
+      <p id="intro-overline">13.8 milliards d'années d'histoire</p>
+      <h1 id="intro-title">Encyclopédie<br><em>de la Terre</em></h1>
+      <div id="intro-divider"></div>
+      <p id="intro-sub">Sciences · Technologies · Civilisations · Nature</p>
+      <div id="intro-stats">
+        <div class="intro-stat">
+          <strong>13.8<small>Ga</small></strong>
+          <span>Univers</span>
+        </div>
+        <div class="intro-stat">
+          <strong id="intro-stat-count">—</strong>
+          <span>Événements</span>
+        </div>
+        <div class="intro-stat">
+          <strong>6</strong>
+          <span>Catégories</span>
+        </div>
+      </div>
+      <button id="intro-cta">Commencer le voyage</button>
+    </div>
+  </div>
+
+  <div id="canvas-container"></div>
+
+  <header id="header">
+    <h1>
+      Encyclopédie de la Terre
+      <span>Sciences &amp; Technologies · 13.8 milliards d'années · <span id="event-total">—</span> événements</span>
+    </h1>
+    <div id="view-switcher">
+      <button class="view-btn active" data-view="cosmos">◉ Spirale</button>
+      <button class="view-btn" data-view="globe">⊕ Globe</button>
+    </div>
+  </header>
+
+  <nav id="filters">
+    <button class="filter-btn active" data-category="all">Tout</button>
+    <button class="filter-btn" data-category="cosmologie">Cosmologie</button>
+    <button class="filter-btn" data-category="géologie">Géologie</button>
+    <button class="filter-btn" data-category="biologie">Biologie</button>
+    <button class="filter-btn" data-category="civilisations">Civilisations</button>
+    <button class="filter-btn" data-category="sciences">Sciences</button>
+    <button class="filter-btn" data-category="technologies">Technologies</button>
+  </nav>
+
+  <aside id="detail-panel">
+    <button class="close-btn" id="detail-close">✕</button>
+    <div id="detail-category"></div>
+    <div id="detail-title"></div>
+    <div id="detail-date"></div>
+    <div id="detail-location"></div>
+    <div id="detail-description"></div>
+    <div id="detail-connections"></div>
+  </aside>
+
+  <div id="tooltip">
+    <strong id="tooltip-title"></strong>
+    <small id="tooltip-date"></small>
+  </div>
+
+  <div id="timeline">
+    <div id="timeline-labels">
+      <span>Big Bang −13.8 Ga</span>
+      <span>Vie −3.8 Ga</span>
+      <span>Humains −300 Ka</span>
+      <span>Civilisations</span>
+      <span>Révolution industrielle</span>
+      <span>Aujourd'hui</span>
+    </div>
+    <div id="timeline-track">
+      <div id="timeline-progress"></div>
+      <div id="timeline-cursor"></div>
+    </div>
+    <div id="bottom-bar">
+      <div id="current-era">Big Bang</div>
+      <div id="presentation-controls">
+        <button class="ctrl-btn" id="btn-prev" title="Précédent">◀</button>
+        <button class="ctrl-btn" id="btn-play" title="Lecture">▶</button>
+        <button class="ctrl-btn" id="btn-next" title="Suivant">▶▶</button>
+        <button class="ctrl-btn" id="btn-speed" title="Vitesse">⚡</button>
+        <span id="speed-label">×1</span>
+        <span id="event-counter">— / —</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "premieres-villes",
+    "era": "civilisations",
+    "date": { "year": -3500, "label": "−3 500 av. J.-C." },
+    "category": "civilisations",
+    "title": "Premières villes — Uruk, Mésopotamie",
+    "description": "Uruk (actuel Irak) est la première ville de l'histoire avec 50 000 habitants. La concentration urbaine nécessite une administration, une comptabilité et une spécialisation du travail. Elle engendre la bureaucratie, le commerce à longue distance et les premières institutions sociales formelles.",
+    "impact": 9,
+    "connections": ["metallurgie-cuivre", "invention-ecriture", "roue", "metallurgie-bronze"]
+  },
+  {
+    "id": "roue",
+    "era": "civilisations",
+    "date": { "year": -3500, "label": "−3 500 av. J.-C." },
+    "category": "technologies",
+    "title": "Invention de la roue",
+    "description": "La roue apparaît en Mésopotamie, d'abord comme tour de potier, puis comme roue de charrette. Elle révolutionne le transport terrestre, démultiplie la capacité de charge et accélère les échanges commerciaux sur de longues distances. Son principe mécanique sera à la base de l'essentiel de la technologie.",
+    "impact": 10,
+    "connections": ["premieres-villes", "invention-ecriture"]
+  },
+  {
+    "id": "invention-ecriture",
+    "era": "civilisations",
+    "date": { "year": -3300, "label": "−3 300 av. J.-C." },
+    "category": "technologies",
+    "title": "Invention de l'écriture cunéiforme",
+    "description": "Les Sumériens inventent l'écriture pour tenir des comptabilités commerciales. Des pictogrammes gravés sur argile évoluent vers des signes cunéiformes abstraits. Pour la première fois, le savoir peut être stocké hors du cerveau humain, transmis à travers le temps et l'espace — révolution épistémique fondamentale.",
+    "impact": 10,
+    "connections": ["premieres-villes", "roue", "metallurgie-bronze", "mathematiques-babyloniennes"]
+  },
+  {
+    "id": "metallurgie-bronze",
+    "era": "civilisations",
+    "date": { "year": -3300, "label": "−3 300 av. J.-C." },
+    "category": "technologies",
+    "title": "Métallurgie du bronze",
+    "description": "L'alliage cuivre-étain produit un métal bien plus dur que le cuivre pur. Le bronze permet armes, outils agricoles et objets de prestige d'une qualité sans précédent. L'âge du Bronze voit émerger les premiers empires militaires et des réseaux d'échange intercontinentaux pour l'approvisionnement en étain.",
+    "impact": 9,
+    "connections": ["metallurgie-cuivre", "premieres-villes", "pyramides", "metallurgie-fer"]
+  },
+  {
+    "id": "pyramides",
+    "era": "civilisations",
+    "date": { "year": -2560, "label": "−2 560 av. J.-C." },
+    "category": "sciences",
+    "title": "Pyramides de Gizeh — Génie architectural",
+    "description": "La Grande Pyramide de Kheops, avec ses 2,3 millions de blocs de 2 à 15 tonnes, démontre une maîtrise extraordinaire de l'organisation du travail, de la logistique et de la géométrie pratique. Sa précision d'orientation (0,05° du nord) révèle des connaissances astronomiques avancées.",
+    "impact": 8,
+    "connections": ["metallurgie-bronze", "mathematiques-egyptiennes"]
+  },
+  {
+    "id": "mathematiques-egyptiennes",
+    "era": "civilisations",
+    "date": { "year": -1650, "label": "−1 650 av. J.-C. (papyrus de Rhind)" },
+    "category": "sciences",
+    "title": "Mathématiques égyptiennes et babyloniennes",
+    "description": "Le papyrus de Rhind et les tablettes babyloniennes révèlent un corpus mathématique avancé : fractions, équations du second degré, calcul de volumes et d'aires, théorème de Pythagore (1000 ans avant Pythagore). Ces mathématiques pratiques servent l'agriculture, l'architecture et le commerce.",
+    "impact": 8,
+    "connections": ["invention-ecriture", "pyramides", "mathematiques-babyloniennes"]
+  },
+  {
+    "id": "mathematiques-babyloniennes",
+    "era": "civilisations",
+    "date": { "year": -1750, "label": "−1 750 av. J.-C." },
+    "category": "sciences",
+    "title": "Astronomie et algèbre babyloniennes",
+    "description": "Les Babyloniens développent un système de numération en base 60 (encore utilisé pour les heures et les angles) et des tables astronomiques prédisant éclipses et mouvements planétaires avec une précision remarquable. Ils résolvent des équations du second degré — fondement de l'algèbre.",
+    "impact": 9,
+    "connections": ["invention-ecriture", "mathematiques-egyptiennes", "philosophie-grecque"]
+  },
+  {
+    "id": "metallurgie-fer",
+    "era": "civilisations",
+    "date": { "year": -1200, "label": "−1 200 av. J.-C." },
+    "category": "technologies",
+    "title": "Métallurgie du fer",
+    "description": "Le fer, plus abondant que l'étain, démocratise les outils agricoles et les armes. Les haches, charrues et épées en fer transforment agriculture et guerre. L'âge du Fer voit s'effondrer les empires du Bronze remplacés par de nouvelles puissances — dont la Grèce et Rome — fondées sur cette technologie.",
+    "impact": 9,
+    "connections": ["metallurgie-bronze", "alphabet-phenicien", "philosophie-grecque"]
+  },
+  {
+    "id": "alphabet-phenicien",
+    "era": "civilisations",
+    "date": { "year": -1050, "label": "−1 050 av. J.-C." },
+    "category": "technologies",
+    "title": "Alphabet phénicien",
+    "description": "Les Phéniciens créent le premier alphabet consonantique : 22 signes simples représentant les sons de la langue (et non des mots ou syllabes). Cet alphabet, ancêtre de tous les alphabets actuels (grec, latin, arabe, hébreu…), démocratise l'écriture, permettant à n'importe quel marchand de lire et écrire.",
+    "impact": 10,
+    "connections": ["metallurgie-fer", "philosophie-grecque"]
+  },
+  {
+    "id": "philosophie-grecque",
+    "era": "civilisations",
+    "date": { "year": -600, "label": "−600 av. J.-C." },
+    "category": "sciences",
+    "title": "Naissance de la philosophie et des sciences grecques",
+    "description": "Thalès de Milet est le premier à chercher des explications naturelles (non mythologiques) aux phénomènes du monde. Cette rupture épistémologique — le logos remplaçant le mythos — fonde la méthode scientifique. Anaximandre, Héraclite, Parménide bâtissent les premières ontologies rationnelles.",
+    "impact": 10,
+    "connections": ["alphabet-phenicien", "mathematiques-babyloniennes", "theoreme-pythagore"]
+  },
+  {
+    "id": "theoreme-pythagore",
+    "era": "civilisations",
+    "date": { "year": -530, "label": "−530 av. J.-C." },
+    "category": "sciences",
+    "title": "École pythagoricienne — Mathématiques et harmonie",
+    "description": "Pythagore et son école établissent que les nombres gouvernent le cosmos. Outre le célèbre théorème, ils découvrent les proportions musicales, étudient les polyèdres réguliers et fondent l'idée que les mathématiques sont le langage de la nature — programme qui guidera Kepler et Newton 2000 ans plus tard.",
+    "impact": 9,
+    "connections": ["philosophie-grecque", "hippocrate-medecine"]
+  },
+  {
+    "id": "hippocrate-medecine",
+    "era": "civilisations",
+    "date": { "year": -400, "label": "−400 av. J.-C." },
+    "category": "sciences",
+    "title": "Hippocrate — Médecine rationnelle",
+    "description": "Hippocrate sépare la médecine de la religion et de la magie : les maladies ont des causes naturelles et doivent être traitées par l'observation clinique, le régime et les remèdes naturels. Son Corpus hippocratique fonde l'éthique médicale (serment) et la sémiologie — observation systématique des symptômes.",
+    "impact": 9,
+    "connections": ["theoreme-pythagore", "euclide-geometrie"]
+  },
+  {
+    "id": "euclide-geometrie",
+    "era": "civilisations",
+    "date": { "year": -300, "label": "−300 av. J.-C." },
+    "category": "sciences",
+    "title": "Euclide — Les Éléments",
+    "description": "Les Éléments d'Euclide organisent toute la géométrie connue en un système axiomatique déductif : 5 postulats → 465 théorèmes. Ce modèle hypothético-déductif reste la référence de la pensée mathématique jusqu'au XIXe siècle et influence profondément la logique, la physique et la philosophie.",
+    "impact": 10,
+    "connections": ["theoreme-pythagore", "archimede"]
+  },
+  {
+    "id": "archimede",
+    "era": "civilisations",
+    "date": { "year": -250, "label": "−250 av. J.-C." },
+    "category": "sciences",
+    "title": "Archimède — Physique et mathématiques",
+    "description": "Archimède découvre le principe de la poussée hydrostatique (Eurêka !), calcule π avec précision, invente la vis d'Archimède, démontre les lois du levier et développe une méthode d'exhaustion précurseuse du calcul intégral. Il est le premier à unifier mathématiques pures et physique appliquée.",
+    "impact": 10,
+    "connections": ["euclide-geometrie", "route-soie"]
+  },
+  {
+    "id": "route-soie",
+    "era": "civilisations",
+    "date": { "year": -130, "label": "−130 av. J.-C." },
+    "category": "civilisations",
+    "title": "Route de la Soie",
+    "description": "La Route de la Soie relie la Chine au bassin méditerranéen sur 7 000 km. Au-delà des marchandises (soie, épices, verre, papier), elle est un vecteur de transmission des savoirs : mathématiques, médecine, religions, technologies voyagent d'une civilisation à l'autre, accélérant le progrès humain.",
+    "impact": 9,
+    "connections": ["archimede", "genie-romain", "papier-chine"]
+  },
+  {
+    "id": "genie-romain",
+    "era": "civilisations",
+    "date": { "year": 0, "label": "Ier siècle ap. J.-C." },
+    "category": "technologies",
+    "title": "Génie civil romain — Béton et aqueducs",
+    "description": "Les Romains inventent le béton hydraulique (opus caementicium), le ciment pouzzolanique résistant à l'eau, et construisent 80 000 km de routes, des aqueducs de 100 km et des structures comme le Panthéon (dôme non surpassé pendant 1300 ans). Leur droit civil codifié fonde les systèmes juridiques européens actuels.",
+    "impact": 9,
+    "connections": ["route-soie", "papier-chine"]
+  },
+  {
+    "id": "papier-chine",
+    "era": "civilisations",
+    "date": { "year": 105, "label": "105 ap. J.-C." },
+    "category": "technologies",
+    "title": "Invention du papier (Cai Lun, Chine)",
+    "description": "Cai Lun perfectionne la fabrication du papier à partir d'écorce de mûrier, de chanvre et de chiffons. Léger, économique et facile à produire, le papier remplace progressivement les tablettes d'argile et les papyrus. Diffusé via la Route de la Soie, il révolutionne la transmission du savoir dans tout l'Ancien Monde.",
+    "impact": 9,
+    "connections": ["genie-romain", "route-soie", "algebre", "zero-inde"]
+  },
+  {
+    "id": "zero-inde",
+    "era": "civilisations",
+    "date": { "year": 628, "label": "628 ap. J.-C." },
+    "category": "sciences",
+    "title": "Le zéro et la numération indienne",
+    "description": "Brahmagupta formalise les règles arithmétiques du zéro comme nombre à part entière. Le système indien de numération positionnel (0-9) — diffusé vers l'Occident par les savants arabes sous le nom de 'chiffres arabes' — révolutionne le calcul, rendant possible l'algèbre, la physique et toute la science moderne.",
+    "impact": 10,
+    "connections": ["papier-chine", "algebre"]
+  }
+]
