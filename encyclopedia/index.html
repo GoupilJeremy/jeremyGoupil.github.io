@@ -280,6 +280,146 @@
     #speed-label { font-size: 0.63rem; color: rgba(255,255,255,0.28); min-width: 24px; text-align: center; }
     #event-counter { font-size: 0.63rem; color: rgba(255,255,255,0.28); min-width: 56px; text-align: right; }
 
+    /* ── UI visibility (hidden until intro exits) ── */
+    #header, #filters, #timeline { opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
+    #header.ui-visible, #filters.ui-visible, #timeline.ui-visible { opacity: 1; pointer-events: all; }
+
+    /* ── Intro ── */
+    #intro {
+      position: fixed; inset: 0; z-index: 50;
+      background: radial-gradient(ellipse at 50% 40%, rgba(6,18,45,0.82) 0%, rgba(2,4,8,0.96) 70%);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 1.2s ease;
+    }
+    #intro.hidden { opacity: 0; pointer-events: none; }
+    #intro::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to top, rgba(2,4,8,1) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    #intro-ring {
+      position: absolute;
+      width: min(70vw, 70vh); height: min(70vw, 70vh);
+      border: 1px solid rgba(100,181,246,0.07);
+      border-radius: 50%;
+      animation: ring-spin 35s linear infinite;
+      pointer-events: none;
+    }
+    #intro-ring::before {
+      content: '';
+      position: absolute; inset: 12%;
+      border: 1px solid rgba(100,181,246,0.05);
+      border-radius: 50%;
+    }
+    #intro-ring::after {
+      content: '';
+      position: absolute; inset: 28%;
+      border: 1px solid rgba(100,181,246,0.04);
+      border-radius: 50%;
+    }
+    @keyframes ring-spin { to { transform: rotate(360deg); } }
+
+    /* Subtle rotating dot on the ring */
+    #intro-ring-dot {
+      position: absolute;
+      width: min(70vw, 70vh); height: min(70vw, 70vh);
+      border-radius: 50%;
+      animation: ring-spin 35s linear infinite;
+      pointer-events: none;
+    }
+    #intro-ring-dot::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      transform: translateX(-50%);
+    }
+
+    #intro-content {
+      position: relative; z-index: 1;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0;
+    }
+    #intro-overline {
+      font-size: 0.65rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(100,181,246,0.55);
+      margin-bottom: 20px;
+    }
+    #intro-title {
+      font-size: clamp(2.2rem, 5.5vw, 4.6rem);
+      font-weight: 200;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 8px;
+    }
+    #intro-title em {
+      display: block;
+      font-style: normal;
+      color: var(--accent);
+    }
+    #intro-divider {
+      width: 48px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(100,181,246,0.45), transparent);
+      margin: 18px auto;
+    }
+    #intro-sub {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.28);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    #intro-stats {
+      display: flex; gap: 48px;
+      margin-bottom: 40px;
+    }
+    .intro-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .intro-stat strong {
+      font-size: 1.5rem; font-weight: 200;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .intro-stat strong small {
+      font-size: 0.75em;
+      opacity: 0.7;
+    }
+    .intro-stat span {
+      font-size: 0.57rem; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.28); text-transform: uppercase;
+    }
+    #intro-cta {
+      background: transparent;
+      border: 1px solid rgba(100,181,246,0.35);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      padding: 13px 40px;
+      border-radius: 30px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.25s;
+    }
+    #intro-cta:hover {
+      background: rgba(100,181,246,0.1);
+      border-color: var(--accent);
+      box-shadow: 0 0 28px rgba(100,181,246,0.2), inset 0 0 12px rgba(100,181,246,0.05);
+      color: #fff;
+    }
+
     /* ── Loading ── */
     #loading {
       position: fixed; inset: 0; z-index: 100;
@@ -311,6 +451,32 @@
     <div class="loader-ring"></div>
     <h2>Encyclopédie 3D</h2>
     <div id="loading-detail">Chargement de l'univers…</div>
+  </div>
+
+  <div id="intro" class="hidden">
+    <div id="intro-ring"></div>
+    <div id="intro-ring-dot"></div>
+    <div id="intro-content">
+      <p id="intro-overline">13.8 milliards d'années d'histoire</p>
+      <h1 id="intro-title">Encyclopédie<br><em>de la Terre</em></h1>
+      <div id="intro-divider"></div>
+      <p id="intro-sub">Sciences · Technologies · Civilisations · Nature</p>
+      <div id="intro-stats">
+        <div class="intro-stat">
+          <strong>13.8<small>Ga</small></strong>
+          <span>Univers</span>
+        </div>
+        <div class="intro-stat">
+          <strong id="intro-stat-count">—</strong>
+          <span>Événements</span>
+        </div>
+        <div class="intro-stat">
+          <strong>6</strong>
+          <span>Catégories</span>
+        </div>
+      </div>
+      <button id="intro-cta">Commencer le voyage</button>
+    </div>
   </div>
 
   <div id="canvas-container"></div>

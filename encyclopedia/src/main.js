@@ -34,6 +34,10 @@ const currentEra       = document.getElementById('current-era')
 const filterBtns    = document.querySelectorAll('.filter-btn')
 const viewBtns      = document.querySelectorAll('.view-btn')
 
+const intro         = document.getElementById('intro')
+const introCta      = document.getElementById('intro-cta')
+const introStatCount = document.getElementById('intro-stat-count')
+
 const btnPlay  = document.getElementById('btn-play')
 const btnPrev  = document.getElementById('btn-prev')
 const btnNext  = document.getElementById('btn-next')
@@ -119,6 +123,7 @@ async function init() {
   events = await loadEvents()
 
   eventTotal.textContent = events.length
+  introStatCount.textContent = events.length
 
   loadingDetail.textContent = 'Génération de la scène 3D…'
   await new Promise(r => setTimeout(r, 60)) // let DOM update
@@ -140,11 +145,46 @@ async function init() {
 
   gsap.to(loading, {
     opacity: 0, duration: 0.8, delay: 0.3,
-    onComplete: () => loading.classList.add('hidden'),
+    onComplete: () => {
+      loading.classList.add('hidden')
+      showIntro()
+    },
   })
 
   animate()
 }
+
+// ── Intro ────────────────────────────────────────────────────────────────────
+function showIntro() {
+  intro.classList.remove('hidden')
+
+  const tl = gsap.timeline()
+  tl.fromTo('#intro-overline',  { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9 }, 0.1)
+  tl.fromTo('#intro-title',     { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 1.1 }, 0.5)
+  tl.fromTo('#intro-divider',   { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.7, transformOrigin: 'center' }, 1.2)
+  tl.fromTo('#intro-sub',       { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8 }, 1.5)
+  tl.fromTo('#intro-stats',     { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8 }, 1.9)
+  tl.fromTo('#intro-cta',       { opacity: 0, y: 8  }, { opacity: 1, y: 0, duration: 0.7 }, 2.4)
+
+  // Subtle pulsing on CTA after it appears
+  tl.to('#intro-cta', {
+    boxShadow: '0 0 18px rgba(100,181,246,0.18)',
+    duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut',
+  }, '+=0.2')
+}
+
+introCta.addEventListener('click', () => {
+  gsap.killTweensOf('#intro-cta')
+  gsap.to(intro, {
+    opacity: 0, duration: 1.0, ease: 'power2.inOut',
+    onComplete: () => { intro.classList.add('hidden') },
+  })
+  // Stagger in the UI elements
+  const uiEls = [document.getElementById('header'), document.getElementById('filters'), document.getElementById('timeline')]
+  uiEls.forEach((el, i) => {
+    gsap.delayedCall(0.4 + i * 0.12, () => el.classList.add('ui-visible'))
+  })
+})
 
 // ── Animation loop ───────────────────────────────────────────────────────────
 function animate() {
