@@ -197,7 +197,7 @@ export class GlobeScene {
 
       const color  = CATEGORY_COLORS[event.category] ?? 0xffffff
       const impact = event.impact ?? 5
-      const r      = 0.04 + (impact / 10) * 0.06
+      const r      = 0.07 + (impact / 10) * 0.09
 
       const pos = latLonToVec3(loc.lat, loc.lon, MARKER_RADIUS)
 
@@ -272,7 +272,7 @@ export class GlobeScene {
 
   _positionCamera() {
     gsap.to(this.camera.position, {
-      x: 0, y: 3, z: 14,
+      x: 0, y: 1, z: 11,
       duration: 1.4,
       ease: 'power3.inOut',
       onUpdate: () => this.camera.lookAt(0, 0, 0),
